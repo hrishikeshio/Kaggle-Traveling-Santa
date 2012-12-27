@@ -1,0 +1,1941 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     85485,       1931]
+NotebookOptionsPosition[     83499,       1859]
+NotebookOutlinePosition[     84178,       1885]
+CellTagsIndexPosition[     84135,       1882]
+WindowTitle->Comparing Algorithms for the Traveling Salesman Problem - Source
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Comparing Algorithms for the Traveling Salesman Problem", "Section",
+ CellFrame->{{0, 0}, {0, 0}},
+ ShowCellBracket->False,
+ FontColor->RGBColor[0.597406, 0, 0.0527047]],
+
+Cell[BoxData[
+ GraphicsBox[RasterBox[CompressedData["
+1:eJztnVuSozgWQDNiPqa3MJ+zpVlCbaB3WlGVNV9dvYH6TQRUph/ZGIHQmwvG
+xoZzQu3Aku7VfUj4Nk53//fLn//78q+Xl5f/NP/88e+Xl8v154Xj5+fp89y0
+4+X63L7VnQu02XqOt9FzjRK5qtRMoYZFpk11/Ji+WDye92+r7+fFfbnGkuu9
+eIQ4LBVJ+YRo5DPnRdITDp0TLRg6m/62nY/n08f5+H461G37fWqum57z4Xy2
+jby0prMZOh4/jodLOx2bt6fzRSEA3B/KMKGSBy/DSKVcyYOn8krHqajvqed6
+G6iol4qkfAIVNQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADsizPA/lj72AEA
+AMCmWLu0AXh01j6jAAAAcdb+hNwUJ5e1zZnPDEeey/e1jx0AAABsirVLm03x
+XFVlhs1X1JNY+4wCAAB02B9PJ4BdsvYpBAAAgOeGihpADo9GAUDIr+Lnr7ef
+a9vw16/i73VtMPx6+2v1gGwMijeAE89FAQA2DRW1BxX14lBRA0wi+lx0baMA
+AAAAAAAAAAAAbkj0uegR4L4cDoe1TYA1YQMAbIaDy9rm3JU9+w4AjwB3np3D
+BgDYDHuuKu/su3k0ynNRACGLHMy93dm2ijCPpHvD7LliAQAAmA0VNRioqIGK
+GlYk9Vz0AAAAAAAAAAAAALBR9KPR8Kf0a9sFAAAAAAAAAAAAcCt4LgoAAAAA
+AAAAAAB7I/Vc9ONheH9/X9uEzUJsZ0PoAGBZ3gNuLQgggR21GUjl7SC2syF0
+ALAsVNQgxMv14XAI/xOja9sIAAAAT0lYWM5jbT/msGffAQAAAGAp9lxV3sF3
+b1r0uehSZgAAAAAAAAAAAAA8Ar9b6rpuXpu3+tf0PBcFWJcFvxYBAAAAANgh
+VNQAADCK5LnobwAAAAAAAAAAAIANUbcPRav+wehH7LmoUqpsqKqmNTSXRVE0
+by593mtRXlrfo7mImTlVN6ebUOhR07q3jmxVWXqquqxVOUjZq1eDVNe662ro
+Nxe1Xr5o2lt5cUc7VWr3BpGindNL6TkDl5nVIGWtbuaXWbwJo/OVKjSX68oL
+shMTO4ylHf+yy5GbhU5EubJJPeWgx5ayBfvOIR2qD5QJXWmFtJs2pLsLvu40
+4oOesh/tJ3TKW/3DomZONgVdVPtNXvVXYWydyBRl/NWNWNW62L06G344TcNW
+L/SVpaTqcmeOWGWOm3W+TFPWsbL8dE1yklUal73ghDtBH+Hu1dE/HBM7/t7h
+sjNoN29Calrl2GadWfsMeoc0elcR584clrm5qzO5a+5mQe4imy2Tu1qcu+g2
+7od7mkvVtqJtajgInQuqzUrRtWFCzIAkzQdK0/RR1U33JEhtgOhosnmLKtX0
+DArVhaJHtZOlmgPbVN+mWZhRGzNvEc13MD61kIRcEPS2WciRp/C97a0ow569
+DCOVRurZU0lFnUoBFbWkKiv7I0xFLc4dFXUAFfVUtVTUYRD2V1EnfTd7u920
+v+va/NXoSXM86qXVwFtzgNvS7vJG3730Ga76Wkq/6lFz3dlWOa+69XpUOSix
+ixQtrrVV1pxBleO+uesMsv6QjenXF+bViFjGO5rtObaUp7bVoENe21Kqy1Un
+1M8xOaxNftysOh61q5joKStQpbkIQ2p54HRWXcqsOsbVU7oZNBr8Fbv+yotk
+GBkvbuFbu9/LkY6DF3ZvTvqtOVXdBi0dlN6WZekEsHfQ2flmjpnQ+25vfn//
+2yH1eswnokp/tNkpsJNrTqJruX4tzAkKBJXJVdUbbJmtrwtrUfuoGm2Ru5S3
+AcrEGQyPld3jzbFTH+oP+is3d+XVuev2wI1zN9w8rZM1I3dFf203xxKvuUyT
+TevJkd8JSzF7iVHBzJa+D0vFZJLapawNh6xiQ91ixaf03R+lDHvaMqwPCKl8
++lRGgkZF3W3Q0oGKmoq685yKmoo6L5jZ0vdhqZhMUruUteEQFfUk37VU98C8
+qRvq+uPjQz8UPZ/P+snoZYIqVAwtaFY0r+E0+8l8VIM3Gs70JkelUoLR0XBm
+2X5dldcmWS5lQ2r1jDue+DBaRvrzvidVpc2WOKJicRvVZu+HaFqjgpngC/MS
+Fek2rRvSjKCy9rnxfepWFFKokVMzWaEsU9GDbEYnbfuoYOpGkdcwql/Sv+fc
+CVdJcY1a+Yo3WuUaZsfE+9S+j3mTRuFZoAxL9eTtFK6ecccTH0bnlmGkMtXz
+dKnMLCTpifZTUUfnyNOR4QGrstQuHTXGFqSiXiV3wlVSXKNWvuKNVrmG2TGh
+ooZb0+T0rUWf/br9e1HvuWjR/z1/+JOUIujKPxYu+l9YCEX0kGVARDxjjHxa
+ygZv6ejF6KiE0cfp0eUk6JMrmVamQx1qkPTIRzNSo4LC0OnbV7S/tD7WRw32
+ElFYP1/y7EkZn09lPhHedej7vDiHSkbzq79YsWcWfUUUzYgXf7mdqa04eiK0
+ebYxe86d9yE+T3n+OzuVqHbMx01Up/kkCud7Q0ZJ5uvCRQhNGvVCoueayK9O
+mKP8qDDd9szol7b5AM5LSup0P7LvxXBX8dWGvlCGTTJm1IBwianK3QySyo2k
+clR/KtShBkmPfDQjNSpIRS0xexJRy8NjS0UtMfVBcmegoh6FijrkEarKPVfU
+Gd89w+rwd/Tt34uq/kuT6C2xsG5WhXvLsu+KUb+8/kxsvQMryUIxdp8PLc/c
+FiblXaJEcgvKuODFf54N8yYXwYejZ2fUbO8i5b7kXwRSPfJtFu1JWZ7BtlZu
+eRg9XXJEbcuriorIU2xkjYjQi2hJFjXeFvFmhjeNUWu9HhO3/LQoe8tdSKqC
+ys+f+tE5aZVoBSU0T87U+sr2emq4Ur7k9eQrhydiaqiF3LqSX4QFfacMk684
+yaT7l2GkUr7iJJOoqKMrUlGPritxZ9RyT9aIUFHn133e3IVQUQvVUlHPhor6
+1r6r/k9G9X1A/47+dDrZ/9+lb9++vbr8+PHDe7X7w077rafHU+JNTo1GF/Wu
+U52hhtCjqGEZJVGdoZsp5ZmZoRe2kc3Fd0tnKGKvJQ9UKr8pRh15dY0MZTOO
+e/pTa43OSUmFpn5Pbzzv7agveTNCJRnZ70FCX4OU5ZWn9KfiELrpLZ3aIZn0
+RYmGN+NRPsIpd7y19pa7qIhQZ15coicVmamMLjpb1SLmLUgmzlOtzau6RRAm
+bYxFTJoh9Vy+U4aNKonqDN1MKc/MDL2wjXydWIaRylElz5LKVExSS2Scigqm
+HHl1jQxlM457+lNrjc5JSYWmUlF7jqQ2RmqHZNIXJRrejEf5CKfc8dbaW+6i
+IkKdeXGJnlRkpjK66GxVi5i3IJk4T7U2r+oWQZi0MRYxaYbUZnyPLvH/lte2
+FP/69esnAAAAAAAAAAAAwM74B4thROM=
+   "], {{0, 0}, {1800, 25}}, {0, 255},
+   ColorFunction->RGBColor],
+  ImageSize->{1800, 25},
+  PlotRange->{{0, 1800}, {0, 25}}]], "Section",
+ CellFrame->{{0, 0}, {0, 0}},
+ ShowCellBracket->False],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"methods", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<OrZweig\>\"", ",", "\"\<OrOpt\>\"", ",", "\"\<TwoOpt\>\"", ",", 
+     "\"\<CCA\>\""}], "}"}]}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.428902720296875*^9, 3.428902720921875*^9}},
+ CellID->145497842],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"dist", "[", 
+   RowBox[{"p1_", ",", "p2_"}], "]"}], ":=", 
+  RowBox[{"Norm", "[", 
+   RowBox[{"p1", "-", "p2"}], "]"}]}]], "Input",
+ CellChangeTimes->{
+  3.35696210375764*^9, 3.428845612774539*^9, {3.428847116749622*^9, 
+   3.428847282707016*^9}, {3.428847332508604*^9, 3.428847339980376*^9}, {
+   3.428847370564743*^9, 3.428847382731226*^9}, {3.428847415681218*^9, 
+   3.428847473119721*^9}, {3.428847685915893*^9, 3.428847878920655*^9}, {
+   3.428848271804469*^9, 3.428848272584269*^9}, {3.428848445811229*^9, 
+   3.428848471912357*^9}, {3.428849807123267*^9, 3.428849833111526*^9}, {
+   3.428849871292898*^9, 3.428849922624467*^9}, {3.428850566236374*^9, 
+   3.428850598393907*^9}, {3.428850702275212*^9, 3.428850708255982*^9}, {
+   3.428850754568444*^9, 3.428850759371213*^9}, {3.428850803997861*^9, 
+   3.428850807708707*^9}, {3.428850879967613*^9, 3.428850885029869*^9}, {
+   3.428851090214*^9, 3.428851106969544*^9}, 3.428851207811042*^9, {
+   3.428851373443849*^9, 3.428851381756651*^9}, {3.428851526988725*^9, 
+   3.428851554854058*^9}, {3.428851675463505*^9, 3.428851704166513*^9}, {
+   3.42885243471597*^9, 3.428852485069848*^9}, {3.428852568738781*^9, 
+   3.42885257268164*^9}, {3.428852617464304*^9, 3.428852671089761*^9}, {
+   3.428852728602249*^9, 3.428852781557356*^9}, 3.428853046415248*^9, {
+   3.428853657529627*^9, 3.428853661145775*^9}, {3.42885369887111*^9, 
+   3.428853748537926*^9}, {3.428853788890567*^9, 3.428853890254007*^9}, {
+   3.428854017532315*^9, 3.428854096688687*^9}, {3.428854864145132*^9, 
+   3.428854864639953*^9}, {3.428855067796835*^9, 3.428855070522028*^9}, 
+   3.428855103226841*^9, 3.428949507726184*^9},
+ CellID->1693220169],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"randinit", "[", "k_", "]"}], " ", ":=", " ", 
+  RowBox[{"Flatten", "[", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", " ", 
+     RowBox[{
+      RowBox[{"RandomSample", "[", 
+       RowBox[{"Range", "[", 
+        RowBox[{"k", " ", "-", "1"}], "]"}], "]"}], " ", "+", " ", "1"}], ",",
+      " ", "1"}], "}"}], "]"}]}]], "Input",
+ CellChangeTimes->{
+  3.35696210375764*^9, 3.428845612774539*^9, {3.428847116749622*^9, 
+   3.428847282707016*^9}, {3.428847332508604*^9, 3.428847339980376*^9}, {
+   3.428847370564743*^9, 3.428847382731226*^9}, {3.428847415681218*^9, 
+   3.428847473119721*^9}, {3.428847685915893*^9, 3.428847878920655*^9}, {
+   3.428848271804469*^9, 3.428848272584269*^9}, {3.428848445811229*^9, 
+   3.428848471912357*^9}, {3.428849807123267*^9, 3.428849833111526*^9}, {
+   3.428849871292898*^9, 3.428849922624467*^9}, {3.428850566236374*^9, 
+   3.428850598393907*^9}, {3.428850702275212*^9, 3.428850708255982*^9}, {
+   3.428850754568444*^9, 3.428850759371213*^9}, {3.428850803997861*^9, 
+   3.428850807708707*^9}, {3.428850879967613*^9, 3.428850885029869*^9}, {
+   3.428851090214*^9, 3.428851106969544*^9}, 3.428851207811042*^9, {
+   3.428851373443849*^9, 3.428851381756651*^9}, {3.428851526988725*^9, 
+   3.428851554854058*^9}, {3.428851675463505*^9, 3.428851704166513*^9}, {
+   3.42885243471597*^9, 3.428852485069848*^9}, {3.428852568738781*^9, 
+   3.42885257268164*^9}, {3.428852617464304*^9, 3.428852671089761*^9}, {
+   3.428852728602249*^9, 3.428852781557356*^9}, 3.428853046415248*^9, {
+   3.428853657529627*^9, 3.428853661145775*^9}, {3.42885369887111*^9, 
+   3.428853748537926*^9}, {3.428853788890567*^9, 3.428853890254007*^9}, {
+   3.428854017532315*^9, 3.428854096688687*^9}, {3.428854864145132*^9, 
+   3.428854864639953*^9}, {3.428855067796835*^9, 3.428855070522028*^9}, {
+   3.428855103226841*^9, 3.428855105009683*^9}, 3.4289495066041794`*^9},
+ CellID->1564341847],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"twoThreeOpt", "[", "pts_", "]"}], ":=", 
+  RowBox[{"Module", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"n", "=", 
+       RowBox[{"Length", "[", "pts", "]"}]}], ",", "pairs", ",", 
+      "pairdistances", ",", "triples", ",", "pd", ",", "tourLength", ",", 
+      "tour", ",", "len", ",", 
+      RowBox[{"changed", "=", "True"}], ",", 
+      RowBox[{"bestlen", "=", "Infinity"}], ",", "besttour", ",", "tuple", 
+      ",", "loss", ",", "c1", ",", "c2", ",", "c3", ",", "c4", ",", "gain", 
+      ",", 
+      RowBox[{"i", "=", "0"}]}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"pairs", "=", 
+      RowBox[{"Subsets", "[", 
+       RowBox[{
+        RowBox[{"Range", "[", "n", "]"}], ",", 
+        RowBox[{"{", "2", "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"pairs", "=", 
+      RowBox[{"Select", "[", 
+       RowBox[{"pairs", ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"#", "[", 
+            RowBox[{"[", "2", "]"}], "]"}], "-", 
+           RowBox[{"#", "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}], "\[GreaterEqual]", "2"}], 
+         "&"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"triples", "=", 
+      RowBox[{"Subsets", "[", 
+       RowBox[{
+        RowBox[{"Range", "[", "n", "]"}], ",", 
+        RowBox[{"{", "3", "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"pairdistances", " ", "=", " ", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"Norm", "[", 
+         RowBox[{
+          RowBox[{"pts", "[", 
+           RowBox[{"[", "j", "]"}], "]"}], "-", 
+          RowBox[{"pts", "[", 
+           RowBox[{"[", "k", "]"}], "]"}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"j", ",", "n"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"k", ",", "n"}], "}"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"pd", "[", 
+       RowBox[{"j_", ",", "k_"}], "]"}], ":=", 
+      RowBox[{"pairdistances", "[", 
+       RowBox[{"[", 
+        RowBox[{
+         RowBox[{"tour", "[", 
+          RowBox[{"[", "j", "]"}], "]"}], ",", 
+         RowBox[{"tour", "[", 
+          RowBox[{"[", "k", "]"}], "]"}]}], "]"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"tourLength", "[", "l_", "]"}], " ", ":=", " ", 
+      RowBox[{"Sum", "[", 
+       RowBox[{
+        RowBox[{"pairdistances", "[", 
+         RowBox[{"[", 
+          RowBox[{
+           RowBox[{"l", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], ",", 
+           RowBox[{"l", "[", 
+            RowBox[{"[", 
+             RowBox[{"i", "+", "1"}], "]"}], "]"}]}], "]"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", 
+          RowBox[{
+           RowBox[{"Length", "[", "l", "]"}], "-", "1"}]}], "}"}]}], "]"}]}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"Do", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"tour", "=", 
+         RowBox[{"randinit", "[", "n", "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"len", "=", 
+         RowBox[{"tourLength", "[", "tour", "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"While", "[", 
+         RowBox[{"changed", ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"changed", "=", "False"}], ";", "\[IndentingNewLine]", 
+           RowBox[{"i", "++"}], ";", "\[IndentingNewLine]", 
+           RowBox[{"Do", "[", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"tuple", "=", 
+               RowBox[{"pairs", "[", 
+                RowBox[{"[", "j", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+              
+              RowBox[{"loss", "=", 
+               RowBox[{"Sum", "[", 
+                RowBox[{
+                 RowBox[{"pd", "[", 
+                  RowBox[{
+                   RowBox[{"tuple", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], ",", 
+                   RowBox[{
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "+", "1"}]}], "]"}], ",", 
+                 
+                 RowBox[{"{", 
+                  RowBox[{"k", ",", "2"}], "}"}]}], "]"}]}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"gain", "=", 
+               RowBox[{"Sum", "[", 
+                RowBox[{
+                 RowBox[{"pd", "[", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "+", "k"}], ",", 
+                   RowBox[{
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "+", "k"}]}], "]"}], ",", 
+                 
+                 RowBox[{"{", 
+                  RowBox[{"k", ",", "0", ",", "1"}], "}"}]}], "]"}]}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{"gain", "<", "loss"}], ",", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"len", "=", 
+                  RowBox[{"len", "-", "loss", "+", "gain"}]}], ";", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"changed", "=", "True"}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"tour", "=", 
+                  RowBox[{"Join", "[", 
+                   RowBox[{
+                    RowBox[{"tour", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"1", ";;", 
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}]}], "]"}], "]"}], ",", 
+                    RowBox[{"tour", "[", 
+                    RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], ";;", 
+                    RowBox[{
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "+", "1"}], ";;", 
+                    RowBox[{"-", "1"}]}], "]"}], "]"}], ",", 
+                    RowBox[{"tour", "[", 
+                    RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "+", "1"}], ";;", 
+                    RowBox[{"n", "+", "1"}]}], "]"}], "]"}]}], "]"}]}], 
+                 ";"}]}], "\[IndentingNewLine]", "]"}], ";"}], 
+             "\[IndentingNewLine]", ",", 
+             RowBox[{"{", 
+              RowBox[{"j", ",", 
+               RowBox[{"Length", "[", "pairs", "]"}]}], "}"}]}], 
+            "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+           RowBox[{"Do", "[", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"tuple", "=", 
+               RowBox[{"triples", "[", 
+                RowBox[{"[", "j", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+              
+              RowBox[{"loss", "=", 
+               RowBox[{"Sum", "[", 
+                RowBox[{
+                 RowBox[{"pd", "[", 
+                  RowBox[{
+                   RowBox[{"tuple", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], ",", 
+                   RowBox[{
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "+", "1"}]}], "]"}], ",", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"{", 
+                  RowBox[{"k", ",", "3"}], "}"}]}], "]"}]}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"c1", "=", 
+               RowBox[{
+                RowBox[{"pd", "[", 
+                 RowBox[{
+                  RowBox[{"tuple", "[", 
+                   RowBox[{"[", "1", "]"}], "]"}], ",", 
+                  RowBox[{
+                   RowBox[{"tuple", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "+", "1"}]}], "]"}], "+", 
+                "\[IndentingNewLine]", 
+                RowBox[{"pd", "[", 
+                 RowBox[{
+                  RowBox[{"tuple", "[", 
+                   RowBox[{"[", "3", "]"}], "]"}], ",", 
+                  RowBox[{
+                   RowBox[{"tuple", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "+", "1"}]}], "]"}], "+", 
+                "\[IndentingNewLine]", 
+                RowBox[{"pd", "[", 
+                 RowBox[{
+                  RowBox[{"tuple", "[", 
+                   RowBox[{"[", "2", "]"}], "]"}], ",", 
+                  RowBox[{
+                   RowBox[{"tuple", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "+", "1"}]}], "]"}]}]}], 
+              ";", "\[IndentingNewLine]", 
+              RowBox[{"c2", "=", 
+               RowBox[{
+                RowBox[{"pd", "[", 
+                 RowBox[{
+                  RowBox[{"tuple", "[", 
+                   RowBox[{"[", "1", "]"}], "]"}], ",", 
+                  RowBox[{"tuple", "[", 
+                   RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "+", 
+                "\[IndentingNewLine]", 
+                RowBox[{"pd", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"tuple", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "+", "1"}], ",", 
+                  RowBox[{"tuple", "[", 
+                   RowBox[{"[", "3", "]"}], "]"}]}], "]"}], "+", 
+                "\[IndentingNewLine]", 
+                RowBox[{"pd", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"tuple", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "+", "1"}], ",", 
+                  RowBox[{
+                   RowBox[{"tuple", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "+", "1"}]}], "]"}]}]}], 
+              ";", "\[IndentingNewLine]", 
+              RowBox[{"c3", "=", 
+               RowBox[{
+                RowBox[{"pd", "[", 
+                 RowBox[{
+                  RowBox[{"tuple", "[", 
+                   RowBox[{"[", "1", "]"}], "]"}], ",", 
+                  RowBox[{
+                   RowBox[{"tuple", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "+", "1"}]}], "]"}], "+", 
+                "\[IndentingNewLine]", 
+                RowBox[{"pd", "[", 
+                 RowBox[{
+                  RowBox[{"tuple", "[", 
+                   RowBox[{"[", "3", "]"}], "]"}], ",", 
+                  RowBox[{"tuple", "[", 
+                   RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "+", 
+                "\[IndentingNewLine]", 
+                RowBox[{"pd", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"tuple", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "+", "1"}], ",", 
+                  RowBox[{
+                   RowBox[{"tuple", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "+", "1"}]}], "]"}]}]}], 
+              ";", "\[IndentingNewLine]", 
+              RowBox[{"c4", "=", 
+               RowBox[{
+                RowBox[{"pd", "[", 
+                 RowBox[{
+                  RowBox[{"tuple", "[", 
+                   RowBox[{"[", "1", "]"}], "]"}], ",", 
+                  RowBox[{"tuple", "[", 
+                   RowBox[{"[", "3", "]"}], "]"}]}], "]"}], "+", 
+                "\[IndentingNewLine]", 
+                RowBox[{"pd", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"tuple", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "+", "1"}], ",", 
+                  RowBox[{
+                   RowBox[{"tuple", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "+", "1"}]}], "]"}], "+", 
+                "\[IndentingNewLine]", 
+                RowBox[{"pd", "[", 
+                 RowBox[{
+                  RowBox[{"tuple", "[", 
+                   RowBox[{"[", "2", "]"}], "]"}], ",", 
+                  RowBox[{
+                   RowBox[{"tuple", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "+", "1"}]}], "]"}]}]}], 
+              ";", "\[IndentingNewLine]", 
+              RowBox[{"gain", "=", 
+               RowBox[{"Min", "[", 
+                RowBox[{"c1", ",", "c2", ",", "c3", ",", "c4"}], "]"}]}], ";",
+               "\[IndentingNewLine]", 
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{"gain", "<", "loss"}], ",", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"len", "=", 
+                  RowBox[{"len", "-", "loss", "+", "gain"}]}], ";", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"changed", "=", "True"}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"Which", "[", "\[IndentingNewLine]", 
+                  RowBox[{
+                   RowBox[{"gain", "==", "c1"}], ",", "\[IndentingNewLine]", 
+                   RowBox[{"tour", "=", 
+                    RowBox[{"Join", "[", 
+                    RowBox[{
+                    RowBox[{"tour", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"1", ";;", 
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}]}], "]"}], "]"}], ",", 
+                    RowBox[{"tour", "[", 
+                    RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "+", "1"}], ";;", 
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}]}], "]"}], "]"}], ",", 
+                    RowBox[{"tour", "[", 
+                    RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "+", "1"}], ";;", 
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "]"}], ",", 
+                    RowBox[{"tour", "[", 
+                    RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "+", "1"}], ";;", 
+                    RowBox[{"n", "+", "1"}]}], "]"}], "]"}]}], "]"}]}], ",", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"gain", "==", "c2"}], ",", "\[IndentingNewLine]", 
+                   RowBox[{"tour", "=", 
+                    RowBox[{"Join", "[", 
+                    RowBox[{
+                    RowBox[{"tour", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"1", ";;", 
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}]}], "]"}], "]"}], ",", 
+                    RowBox[{"tour", "[", 
+                    RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], ";;", 
+                    RowBox[{
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "+", "1"}], ";;", 
+                    RowBox[{"-", "1"}]}], "]"}], "]"}], ",", 
+                    RowBox[{"tour", "[", 
+                    RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], ";;", 
+                    RowBox[{
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "+", "1"}], ";;", 
+                    RowBox[{"-", "1"}]}], "]"}], "]"}], ",", 
+                    RowBox[{"tour", "[", 
+                    RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "+", "1"}], ";;", 
+                    RowBox[{"n", "+", "1"}]}], "]"}], "]"}]}], "]"}]}], ",", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"gain", "==", "c3"}], ",", "\[IndentingNewLine]", 
+                   RowBox[{"tour", "=", 
+                    RowBox[{"Join", "[", 
+                    RowBox[{
+                    RowBox[{"tour", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"1", ";;", 
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}]}], "]"}], "]"}], ",", 
+                    RowBox[{"tour", "[", 
+                    RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "+", "1"}], ";;", 
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}]}], "]"}], "]"}], ",", 
+                    RowBox[{"tour", "[", 
+                    RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], ";;", 
+                    RowBox[{
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "+", "1"}], ";;", 
+                    RowBox[{"-", "1"}]}], "]"}], "]"}], ",", 
+                    RowBox[{"tour", "[", 
+                    RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "+", "1"}], ";;", 
+                    RowBox[{"n", "+", "1"}]}], "]"}], "]"}]}], "]"}]}], ",", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"gain", "==", "c4"}], ",", "\[IndentingNewLine]", 
+                   RowBox[{"tour", "=", 
+                    RowBox[{"Join", "[", 
+                    RowBox[{
+                    RowBox[{"tour", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"1", ";;", 
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}]}], "]"}], "]"}], ",", 
+                    RowBox[{"tour", "[", 
+                    RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], ";;", 
+                    RowBox[{
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "+", "1"}], ";;", 
+                    RowBox[{"-", "1"}]}], "]"}], "]"}], ",", 
+                    RowBox[{"tour", "[", 
+                    RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "+", "1"}], ";;", 
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "]"}], ",", 
+                    RowBox[{"tour", "[", 
+                    RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "+", "1"}], ";;", 
+                    RowBox[{"n", "+", "1"}]}], "]"}], "]"}]}], "]"}]}], ",", 
+                   "\[IndentingNewLine]", "True", ",", 
+                   RowBox[{"Print", "[", "\"\<trouble\>\"", "]"}]}], "]"}], 
+                 ";"}]}], "\[IndentingNewLine]", "]"}], ";"}], 
+             "\[IndentingNewLine]", ",", 
+             RowBox[{"{", 
+              RowBox[{"j", ",", 
+               RowBox[{"Length", "[", "triples", "]"}]}], "}"}]}], "]"}], ";",
+            "\[IndentingNewLine]", 
+           RowBox[{"Do", "[", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"tuple", "=", 
+               RowBox[{"pairs", "[", 
+                RowBox[{"[", "j", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+              
+              RowBox[{"loss", "=", 
+               RowBox[{"Sum", "[", 
+                RowBox[{
+                 RowBox[{"pd", "[", 
+                  RowBox[{
+                   RowBox[{"tuple", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], ",", 
+                   RowBox[{
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "+", "1"}]}], "]"}], ",", 
+                 
+                 RowBox[{"{", 
+                  RowBox[{"k", ",", "2"}], "}"}]}], "]"}]}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"gain", "=", 
+               RowBox[{"Sum", "[", 
+                RowBox[{
+                 RowBox[{"pd", "[", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "+", "k"}], ",", 
+                   RowBox[{
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "+", "k"}]}], "]"}], ",", 
+                 
+                 RowBox[{"{", 
+                  RowBox[{"k", ",", "0", ",", "1"}], "}"}]}], "]"}]}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{"gain", "<", "loss"}], ",", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"len", "=", 
+                  RowBox[{"len", "-", "loss", "+", "gain"}]}], ";", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"changed", "=", "True"}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"tour", "=", 
+                  RowBox[{"Join", "[", 
+                   RowBox[{
+                    RowBox[{"tour", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"1", ";;", 
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}]}], "]"}], "]"}], ",", 
+                    RowBox[{"tour", "[", 
+                    RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], ";;", 
+                    RowBox[{
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "+", "1"}], ";;", 
+                    RowBox[{"-", "1"}]}], "]"}], "]"}], ",", 
+                    RowBox[{"tour", "[", 
+                    RowBox[{"[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"tuple", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "+", "1"}], ";;", 
+                    RowBox[{"n", "+", "1"}]}], "]"}], "]"}]}], "]"}]}], 
+                 ";"}]}], "\[IndentingNewLine]", "]"}], ";"}], 
+             "\[IndentingNewLine]", ",", 
+             RowBox[{"{", 
+              RowBox[{"j", ",", 
+               RowBox[{"Length", "[", "pairs", "]"}]}], "}"}]}], 
+            "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+         "]"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"bestlen", ">", "len"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"bestlen", "=", "len"}], ";", "\[IndentingNewLine]", 
+           RowBox[{"besttour", "=", "tour"}], ";"}]}], "\[IndentingNewLine]", 
+         "]"}], ";"}], "\[IndentingNewLine]", ",", 
+       RowBox[{"{", "10", "}"}]}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"bestlen", ",", "besttour"}], "}"}]}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellChangeTimes->{
+  3.35696210375764*^9, 3.428845612774539*^9, {3.428847116749622*^9, 
+   3.428847282707016*^9}, {3.428847332508604*^9, 3.428847339980376*^9}, {
+   3.428847370564743*^9, 3.428847382731226*^9}, {3.428847415681218*^9, 
+   3.428847473119721*^9}, {3.428847685915893*^9, 3.428847878920655*^9}, {
+   3.428848271804469*^9, 3.428848272584269*^9}, {3.428848445811229*^9, 
+   3.428848471912357*^9}, {3.428849807123267*^9, 3.428849833111526*^9}, {
+   3.428849871292898*^9, 3.428849922624467*^9}, {3.428850566236374*^9, 
+   3.428850598393907*^9}, {3.428850702275212*^9, 3.428850708255982*^9}, {
+   3.428850754568444*^9, 3.428850759371213*^9}, {3.428850803997861*^9, 
+   3.428850807708707*^9}, {3.428850879967613*^9, 3.428850885029869*^9}, {
+   3.428851090214*^9, 3.428851106969544*^9}, 3.428851207811042*^9, {
+   3.428851373443849*^9, 3.428851381756651*^9}, {3.428851526988725*^9, 
+   3.428851554854058*^9}, {3.428851675463505*^9, 3.428851704166513*^9}, {
+   3.42885243471597*^9, 3.428852485069848*^9}, {3.428852568738781*^9, 
+   3.42885257268164*^9}, {3.428852617464304*^9, 3.428852671089761*^9}, {
+   3.428852728602249*^9, 3.428852781557356*^9}, 3.428853046415248*^9, {
+   3.428853657529627*^9, 3.428853661145775*^9}, {3.42885369887111*^9, 
+   3.428853748537926*^9}, {3.428853788890567*^9, 3.428853890254007*^9}, {
+   3.428854017532315*^9, 3.428854096688687*^9}, {3.428854864145132*^9, 
+   3.428854864639953*^9}, {3.428855067796835*^9, 3.428855070522028*^9}, {
+   3.428855103226841*^9, 3.428855110108948*^9}, 3.4289494978151417`*^9},
+ CellID->2142234290],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"plot", "[", "l_", "]"}], " ", ":=", " ", 
+  RowBox[{"ListLinePlot", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Points", "[", 
+       RowBox[{"[", "l", "]"}], "]"}], ",", " ", 
+      RowBox[{"Points", "[", 
+       RowBox[{"[", "l", "]"}], "]"}]}], "}"}], ",", " ", 
+    RowBox[{"MeshStyle", " ", "\[Rule]", " ", 
+     RowBox[{"Directive", "[", 
+      RowBox[{
+       RowBox[{"PointSize", "[", "Large", "]"}], ",", " ", "Red"}], "]"}]}], 
+    ",", " ", 
+    RowBox[{"AxesOrigin", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0"}], "}"}]}], ",", 
+    RowBox[{"Mesh", " ", "\[Rule]", " ", "All"}], ",", " ", 
+    RowBox[{"PlotRange", " ", "\[Rule]", " ", "All"}], " ", ",", 
+    RowBox[{"AspectRatio", "\[Rule]", "1"}], " ", ",", 
+    RowBox[{"PlotLabel", "\[Rule]", " ", "\"\<3\[Hyphen]Opt\>\""}], ",", 
+    RowBox[{"ImageSize", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"200", ",", "200"}], "}"}]}], ",", 
+    RowBox[{"ImagePadding", "\[Rule]", "20"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{
+  3.35696210375764*^9, 3.428845612774539*^9, {3.428847116749622*^9, 
+   3.428847282707016*^9}, {3.428847332508604*^9, 3.428847339980376*^9}, {
+   3.428847370564743*^9, 3.428847382731226*^9}, {3.428847415681218*^9, 
+   3.428847473119721*^9}, {3.428847685915893*^9, 3.428847878920655*^9}, {
+   3.428848271804469*^9, 3.428848272584269*^9}, {3.428848445811229*^9, 
+   3.428848471912357*^9}, {3.428849807123267*^9, 3.428849833111526*^9}, {
+   3.428849871292898*^9, 3.428849922624467*^9}, {3.428850566236374*^9, 
+   3.428850598393907*^9}, {3.428850702275212*^9, 3.428850708255982*^9}, {
+   3.428850754568444*^9, 3.428850759371213*^9}, {3.428850803997861*^9, 
+   3.428850807708707*^9}, {3.428850879967613*^9, 3.428850885029869*^9}, {
+   3.428851090214*^9, 3.428851106969544*^9}, 3.428851207811042*^9, {
+   3.428851373443849*^9, 3.428851381756651*^9}, {3.428851526988725*^9, 
+   3.428851554854058*^9}, {3.428851675463505*^9, 3.428851704166513*^9}, {
+   3.42885243471597*^9, 3.428852485069848*^9}, {3.428852568738781*^9, 
+   3.42885257268164*^9}, {3.428852617464304*^9, 3.428852671089761*^9}, {
+   3.428852728602249*^9, 3.428852781557356*^9}, 3.428853046415248*^9, {
+   3.428853657529627*^9, 3.428853661145775*^9}, {3.42885369887111*^9, 
+   3.428853748537926*^9}, {3.428853788890567*^9, 3.428853890254007*^9}, {
+   3.428854017532315*^9, 3.428854096688687*^9}, {3.428854864145132*^9, 
+   3.428854864639953*^9}, {3.428855067796835*^9, 3.428855070522028*^9}, {
+   3.428855103226841*^9, 3.428855116581583*^9}, {3.4288560716596584`*^9, 
+   3.4288560747789702`*^9}, {3.428860061011675*^9, 3.4288600612148027`*^9}, {
+   3.428860596737282*^9, 3.4288605971122866`*^9}, {3.4289028369375*^9, 
+   3.428902838171875*^9}, {3.428903075296875*^9, 3.42890308103125*^9}, {
+   3.428903511875*^9, 3.428903514734375*^9}, {3.428903889671875*^9, 
+   3.4289039274375*^9}, {3.428903962671875*^9, 3.428903965140625*^9}, {
+   3.42890400571875*^9, 3.428904006078125*^9}, 3.4289444355482235`*^9, {
+   3.428949487670348*^9, 3.42894949432446*^9}, {3.43025797934375*^9, 
+   3.43025798278125*^9}},
+ CellID->2013022531],
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"generate", " ", "a", " ", "pseudorandom", " ", "data"}], " ", 
+   "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"SeedRandom", "[", "seed", "]"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Points", " ", "=", " ", 
+     RowBox[{"RandomReal", "[", 
+      RowBox[{"1", ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"pt", ",", " ", "2"}], "}"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", "\n", 
+    RowBox[{"(*", " ", 
+     RowBox[{"ThreeOpt", " ", "algorithm", " ", "output"}], "*)"}], 
+    "\[IndentingNewLine]", 
+    RowBox[{"twothree", "=", 
+     RowBox[{"Timing", "[", 
+      RowBox[{"twoThreeOpt", "[", "Points", "]"}], "]"}]}], ";", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"newdata", "=", 
+     RowBox[{"{", 
+      RowBox[{"\"\<3-Opt\>\"", ",", 
+       RowBox[{"twothree", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], ",", 
+       RowBox[{"twothree", "[", 
+        RowBox[{"[", 
+         RowBox[{"2", ",", "1"}], "]"}], "]"}]}], "}"}]}], ";", " ", 
+    "\[IndentingNewLine]", 
+    RowBox[{"newplot", "=", 
+     RowBox[{"plot", "[", 
+      RowBox[{"twothree", "[", 
+       RowBox[{"[", 
+        RowBox[{"2", ",", "2"}], "]"}], "]"}], "]"}]}], ";", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"(*", " ", 
+     RowBox[{"Mathematica", " ", "algorithm"}], " ", "*)"}], 
+    "\[IndentingNewLine]", 
+    RowBox[{"nummethods", "=", 
+     RowBox[{"Length", "[", "methods", "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"evals", "[", "method_", "]"}], ":=", 
+     RowBox[{
+      RowBox[{"Timing", "[", 
+       RowBox[{
+        RowBox[{"e", "[", "method", "]"}], "=", 
+        RowBox[{"FindShortestTour", "[", 
+         RowBox[{"Points", ",", 
+          RowBox[{"Method", "\[Rule]", "method"}], ",", 
+          RowBox[{"DistanceFunction", " ", "\[Rule]", "EuclideanDistance"}]}],
+          "]"}]}], "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", 
+    RowBox[{"(*", " ", 
+     RowBox[{"Mathematica", " ", "algorithm", " ", "output"}], " ", "*)"}], 
+    "\[IndentingNewLine]", 
+    RowBox[{"mathtable", " ", "=", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Join", "[", 
+        RowBox[{
+         RowBox[{"{", "method", "}"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"evals", "[", "method", "]"}], ",", 
+           RowBox[{
+            RowBox[{"e", "[", "method", "]"}], "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}], "}"}]}], "]"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"method", ",", " ", "methods"}], "}"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"order", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"e", "[", "methodctrl", "]"}], "[", 
+      RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"closeloop", "=", 
+     RowBox[{"Append", "[", 
+      RowBox[{"order", ",", " ", 
+       RowBox[{"order", "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"mathplot", "=", 
+     RowBox[{"ListLinePlot", "[", 
+      RowBox[{
+       RowBox[{"Points", "[", 
+        RowBox[{"[", "closeloop", "]"}], "]"}], ",", " ", 
+       RowBox[{"MeshStyle", "\[Rule]", 
+        RowBox[{"Directive", "[", 
+         RowBox[{
+          RowBox[{"PointSize", "[", "Large", "]"}], ",", " ", "Red"}], 
+         "]"}]}], ",", " ", 
+       RowBox[{"Mesh", " ", "\[Rule]", " ", "All"}], ",", " ", 
+       RowBox[{"PlotRange", " ", "\[Rule]", " ", "All"}], ",", 
+       RowBox[{"AspectRatio", "\[Rule]", "1"}], ",", 
+       RowBox[{"PlotLabel", "\[Rule]", " ", "methodctrl"}], ",", 
+       RowBox[{"AxesOrigin", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0"}], "}"}]}], ",", 
+       RowBox[{"ImageSize", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"200", ",", "200"}], "}"}]}], ",", 
+       RowBox[{"ImagePadding", "\[Rule]", "20"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"(*", " ", 
+     RowBox[{"Show", " ", "all", " ", "output", " ", "benchmark"}], " ", 
+     "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"alltable", "=", 
+     RowBox[{"Chop", "@", 
+      RowBox[{"Grid", "[", 
+       RowBox[{
+        RowBox[{"Prepend", "[", " ", 
+         RowBox[{
+          RowBox[{"Join", "[", 
+           RowBox[{"mathtable", ",", 
+            RowBox[{"{", "newdata", "}"}]}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+           "\"\<Method\>\"", ",", "\"\<Timing\>\"", ",", "\"\<Result\>\""}], 
+           "}"}]}], "]"}], ",", "   ", 
+        RowBox[{"Background", " ", "\[Rule]", " ", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"1", " ", "\[Rule]", "LightGray"}], ",", " ", 
+             RowBox[{"2", " ", "\[Rule]", "LightGreen"}], " ", ",", " ", 
+             RowBox[{"3", " ", "\[Rule]", "LightYellow"}]}], "}"}], ",", " ", 
+           "None"}], "}"}]}], ",", " ", 
+        RowBox[{"Frame", " ", "\[Rule]", " ", "All"}]}], "]"}]}]}], ";", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"minmath", "=", " ", 
+     RowBox[{"Min", "[", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"mathtable", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "[", 
+         RowBox[{"[", "3", "]"}], "]"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", " ", "1", ",", " ", "nummethods"}], "}"}]}], "]"}],
+       "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"judge", "=", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"newdata", "[", 
+         RowBox[{"[", "3", "]"}], "]"}], "==", "minmath"}], ",", 
+       "\"\<Tie\>\"", ",", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"newdata", "[", 
+           RowBox[{"[", "3", "]"}], "]"}], "<", " ", "minmath"}], ",", 
+         "\"\<3\[Hyphen]Opt wins\>\"", ",", 
+         RowBox[{"Row", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Style", "[", 
+             RowBox[{"\"\<Mathematica\>\"", ",", "Italic"}], "]"}], ",", 
+            "\"\< wins\>\""}], "}"}], "]"}]}], "]"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+     "Manipulate", " ", "all", " ", "table", " ", "and", " ", "graphics"}], 
+     " ", "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"Grid", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"mathplot", ",", "newplot"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Text", "@", "alltable"}], ",", 
+         RowBox[{"Text", "[", 
+          RowBox[{"Style", "[", 
+           RowBox[{"judge", ",", 
+            RowBox[{"RGBColor", "[", 
+             RowBox[{".25", ",", ".43", ",", ".82"}], "]"}], ",", "24"}], 
+           "]"}], "]"}]}], "}"}]}], "}"}], "]"}]}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"seed", ",", "1245", ",", "\"\<new random set\>\""}], "}"}], 
+     ",", "1", ",", " ", "25800", ",", " ", "1", ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"pt", ",", "10", ",", "\"\<number of points\>\""}], "}"}], ",", 
+     " ", 
+     RowBox[{"{", 
+      RowBox[{
+      "10", ",", "15", ",", "20", ",", "25", ",", "30", ",", "35", ",", "40", 
+       ",", "45", ",", "50"}], "}"}], ",", 
+     RowBox[{"ControlType", " ", "\[Rule]", " ", "Setter"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "methodctrl", ",", "\"\<OrZweig\>\"", ",", 
+       "\"\<Mathematica method\>\""}], "}"}], ",", "methods", ",", 
+     RowBox[{"ControlType", " ", "\[Rule]", "RadioButtonBar"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"ControlPlacement", "\[Rule]", "Top"}], ",", 
+   RowBox[{"TrackedSymbols", "\[RuleDelayed]", 
+    RowBox[{"{", 
+     RowBox[{"seed", ",", "pt"}], "}"}]}], ",", 
+   RowBox[{"AutorunSequencing", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "3"}], "}"}]}], ",", 
+   RowBox[{"SaveDefinitions", "\[Rule]", "True"}], ",", 
+   RowBox[{"SynchronousUpdating", "\[Rule]", "False"}]}], "]"}]], "Input",
+ CellChangeTimes->{
+  3.35696210375764*^9, 3.42890438475*^9, {3.4289441823759875`*^9, 
+   3.4289441825483027`*^9}, {3.4289444002093368`*^9, 3.428944411111759*^9}, {
+   3.428949351502599*^9, 3.428949402569401*^9}, {3.428949443366742*^9, 
+   3.428949449989687*^9}, {3.428949518369646*^9, 3.4289495193981504`*^9}, 
+   3.4289497490041523`*^9, {3.4289498129338226`*^9, 3.428949825090122*^9}, {
+   3.428952783322022*^9, 3.4289527908557754`*^9}, {3.429375700712433*^9, 
+   3.4293757055529175`*^9}, {3.43025799540625*^9, 3.430257999125*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`methodctrl$$ = 
+    "OrZweig", $CellContext`pt$$ = 10, $CellContext`seed$$ = 1245, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`seed$$], 1245, "new random set"}, 1, 25800, 1}, {{
+       Hold[$CellContext`pt$$], 10, "number of points"}, {10, 15, 20, 25, 30, 
+      35, 40, 45, 50}}, {{
+       Hold[$CellContext`methodctrl$$], "OrZweig", "Mathematica method"}, {
+      "OrZweig", "OrOpt", "TwoOpt", "CCA"}}}, Typeset`size$$ = {
+    408., {155.5, 160.5}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = False, $CellContext`seed$4739$$ = 
+    0, $CellContext`pt$4740$$ = 0, $CellContext`methodctrl$4741$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`methodctrl$$ = 
+        "OrZweig", $CellContext`pt$$ = 10, $CellContext`seed$$ = 1245}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`seed$$, $CellContext`seed$4739$$, 0], 
+        Hold[$CellContext`pt$$, $CellContext`pt$4740$$, 0], 
+        Hold[$CellContext`methodctrl$$, $CellContext`methodctrl$4741$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> (
+       SeedRandom[$CellContext`seed$$]; $CellContext`Points = 
+        RandomReal[1, {$CellContext`pt$$, 2}]; $CellContext`twothree = 
+        Timing[
+          $CellContext`twoThreeOpt[$CellContext`Points]]; \
+$CellContext`newdata = {"3-Opt", 
+          Part[$CellContext`twothree, 1], 
+          
+          Part[$CellContext`twothree, 2, 
+           1]}; $CellContext`newplot = $CellContext`plot[
+          Part[$CellContext`twothree, 2, 2]]; $CellContext`nummethods = 
+        Length[$CellContext`methods]; $CellContext`evals[
+          Pattern[$CellContext`method, 
+           Blank[]]] := Part[
+          
+          Timing[$CellContext`e[$CellContext`method] = 
+           FindShortestTour[$CellContext`Points, 
+             Method -> $CellContext`method, DistanceFunction -> 
+             EuclideanDistance]], 1]; $CellContext`mathtable = Table[
+          Join[{$CellContext`method}, {
+            $CellContext`evals[$CellContext`method], 
+            Part[
+             $CellContext`e[$CellContext`method], 
+             1]}], {$CellContext`method, $CellContext`methods}]; \
+$CellContext`order = Part[
+          $CellContext`e[$CellContext`methodctrl$$], 
+          2]; $CellContext`closeloop = Append[$CellContext`order, 
+          Part[$CellContext`order, 1]]; $CellContext`mathplot = ListLinePlot[
+          Part[$CellContext`Points, $CellContext`closeloop], MeshStyle -> 
+          Directive[
+            PointSize[Large], Red], Mesh -> All, PlotRange -> All, 
+          AspectRatio -> 1, PlotLabel -> $CellContext`methodctrl$$, 
+          AxesOrigin -> {0, 0}, ImageSize -> {200, 200}, ImagePadding -> 
+          20]; $CellContext`alltable = Chop[
+          Grid[
+           Prepend[
+            Join[$CellContext`mathtable, {$CellContext`newdata}], {
+            "Method", "Timing", "Result"}], 
+           Background -> {{1 -> LightGray, 2 -> LightGreen, 3 -> LightYellow},
+              None}, Frame -> All]]; $CellContext`minmath = Min[
+          Table[
+           Part[
+            Part[$CellContext`mathtable, $CellContext`i], 3], {$CellContext`i,
+             1, $CellContext`nummethods}]]; $CellContext`judge = 
+        If[Part[$CellContext`newdata, 3] == $CellContext`minmath, "Tie", 
+          If[
+          Part[$CellContext`newdata, 3] < $CellContext`minmath, 
+           "3\[Hyphen]Opt wins", 
+           Row[{
+             Style["Mathematica", Italic], " wins"}]]]; 
+       Grid[{{$CellContext`mathplot, $CellContext`newplot}, {
+           Text[$CellContext`alltable], 
+           Text[
+            Style[$CellContext`judge, 
+             RGBColor[0.25, 0.43, 0.82], 24]]}}]), 
+      "Specifications" :> {{{$CellContext`seed$$, 1245, "new random set"}, 1, 
+         25800, 1, Appearance -> 
+         "Labeled"}, {{$CellContext`pt$$, 10, "number of points"}, {10, 15, 
+         20, 25, 30, 35, 40, 45, 50}, ControlType -> 
+         Setter}, {{$CellContext`methodctrl$$, "OrZweig", 
+          "Mathematica method"}, {"OrZweig", "OrOpt", "TwoOpt", "CCA"}, 
+         ControlType -> RadioButtonBar}}, 
+      "Options" :> {
+       ControlPlacement -> Top, 
+        TrackedSymbols :> {$CellContext`seed$$, $CellContext`pt$$}, 
+        AutorunSequencing -> {1, 3}, SynchronousUpdating -> False}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{453., {221., 226.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>(({$CellContext`Points = {{0.747693397086989, 
+         0.12002324397252462`}, {0.602006992853128, 0.5152837967353594}, {
+         0.2873102336927402, 0.5080685809591465}, {0.9867610196428751, 
+         0.5823415410790842}, {0.7968328035539889, 0.7813369861815993}, {
+         0.1474601781396787, 0.08815118284327106}, {0.7350364548682082, 
+         0.7796434884055246}, {0.9051069788829482, 0.056993190643075176`}, {
+         0.2775422931991143, 0.9598451766696918}, {0.8141351218851938, 
+         0.11501509796043052`}}, $CellContext`twothree = {
+         0.047, {3.384963976164199, {1, 6, 3, 9, 2, 7, 5, 4, 8, 10, 
+           1}}}, $CellContext`twoThreeOpt[
+          Pattern[$CellContext`pts, 
+           Blank[]]] := 
+        Module[{$CellContext`n = 
+           Length[$CellContext`pts], $CellContext`pairs, \
+$CellContext`pairdistances, $CellContext`triples, $CellContext`pd, \
+$CellContext`tourLength, $CellContext`tour, $CellContext`len, \
+$CellContext`changed = True, $CellContext`bestlen = 
+           Infinity, $CellContext`besttour, $CellContext`tuple, \
+$CellContext`loss, $CellContext`c1, $CellContext`c2, $CellContext`c3, \
+$CellContext`c4, $CellContext`gain, $CellContext`i = 0}, $CellContext`pairs = 
+           Subsets[
+             Range[$CellContext`n], {2}]; $CellContext`pairs = 
+           Select[$CellContext`pairs, Part[#, 2] - Part[#, 1] >= 
+             2& ]; $CellContext`triples = Subsets[
+             Range[$CellContext`n], {3}]; $CellContext`pairdistances = Table[
+             Norm[
+             Part[$CellContext`pts, $CellContext`j] - 
+              Part[$CellContext`pts, $CellContext`k]], {$CellContext`j, \
+$CellContext`n}, {$CellContext`k, $CellContext`n}]; $CellContext`pd[
+             Pattern[$CellContext`j, 
+              Blank[]], 
+             Pattern[$CellContext`k, 
+              Blank[]]] := Part[$CellContext`pairdistances, 
+             Part[$CellContext`tour, $CellContext`j], 
+             Part[$CellContext`tour, $CellContext`k]]; $CellContext`tourLength[
+             Pattern[$CellContext`l, 
+              Blank[]]] := Sum[
+             Part[$CellContext`pairdistances, 
+              Part[$CellContext`l, $CellContext`i], 
+              Part[$CellContext`l, $CellContext`i + 1]], {$CellContext`i, 
+              Length[$CellContext`l] - 1}]; 
+          Do[$CellContext`tour = $CellContext`randinit[$CellContext`n]; \
+$CellContext`len = $CellContext`tourLength[$CellContext`tour]; 
+            While[$CellContext`changed, $CellContext`changed = False; 
+              Increment[$CellContext`i]; 
+              Do[$CellContext`tuple = 
+                 Part[$CellContext`pairs, $CellContext`j]; $CellContext`loss = 
+                 Sum[
+                   $CellContext`pd[
+                    Part[$CellContext`tuple, $CellContext`k], 
+                    Part[$CellContext`tuple, $CellContext`k] + 
+                    1], {$CellContext`k, 2}]; $CellContext`gain = Sum[
+                   $CellContext`pd[
+                   Part[$CellContext`tuple, 1] + $CellContext`k, 
+                    Part[$CellContext`tuple, 
+                    2] + $CellContext`k], {$CellContext`k, 0, 1}]; 
+                If[$CellContext`gain < $CellContext`loss, $CellContext`len = \
+$CellContext`len - $CellContext`loss + $CellContext`gain; \
+$CellContext`changed = True; $CellContext`tour = Join[
+                    Part[$CellContext`tour, 
+                    Span[1, 
+                    Part[$CellContext`tuple, 1]]], 
+                    Part[$CellContext`tour, 
+                    Span[
+                    Part[$CellContext`tuple, 2], Part[$CellContext`tuple, 1] + 
+                    1, -1]], 
+                    Part[$CellContext`tour, 
+                    Span[
+                    Part[$CellContext`tuple, 2] + 1, $CellContext`n + 1]]]; 
+                  Null]; Null, {$CellContext`j, 
+                 Length[$CellContext`pairs]}]; 
+              Do[$CellContext`tuple = 
+                 Part[$CellContext`triples, $CellContext`j]; \
+$CellContext`loss = Sum[
+                   $CellContext`pd[
+                    Part[$CellContext`tuple, $CellContext`k], 
+                    Part[$CellContext`tuple, $CellContext`k] + 
+                    1], {$CellContext`k, 
+                    3}]; $CellContext`c1 = $CellContext`pd[
+                    Part[$CellContext`tuple, 1], Part[$CellContext`tuple, 2] + 
+                    1] + $CellContext`pd[
+                    Part[$CellContext`tuple, 3], Part[$CellContext`tuple, 1] + 
+                    1] + $CellContext`pd[
+                    Part[$CellContext`tuple, 2], Part[$CellContext`tuple, 3] + 
+                    1]; $CellContext`c2 = $CellContext`pd[
+                    Part[$CellContext`tuple, 1], 
+                    Part[$CellContext`tuple, 2]] + $CellContext`pd[
+                   Part[$CellContext`tuple, 1] + 1, 
+                    Part[$CellContext`tuple, 3]] + $CellContext`pd[
+                   Part[$CellContext`tuple, 2] + 1, 
+                    Part[$CellContext`tuple, 3] + 
+                    1]; $CellContext`c3 = $CellContext`pd[
+                    Part[$CellContext`tuple, 1], Part[$CellContext`tuple, 2] + 
+                    1] + $CellContext`pd[
+                    Part[$CellContext`tuple, 3], 
+                    Part[$CellContext`tuple, 2]] + $CellContext`pd[
+                   Part[$CellContext`tuple, 1] + 1, 
+                    Part[$CellContext`tuple, 3] + 
+                    1]; $CellContext`c4 = $CellContext`pd[
+                    Part[$CellContext`tuple, 1], 
+                    Part[$CellContext`tuple, 3]] + $CellContext`pd[
+                   Part[$CellContext`tuple, 2] + 1, 
+                    Part[$CellContext`tuple, 1] + 1] + $CellContext`pd[
+                    Part[$CellContext`tuple, 2], Part[$CellContext`tuple, 3] + 
+                    1]; $CellContext`gain = 
+                 Min[$CellContext`c1, $CellContext`c2, $CellContext`c3, \
+$CellContext`c4]; 
+                If[$CellContext`gain < $CellContext`loss, $CellContext`len = \
+$CellContext`len - $CellContext`loss + $CellContext`gain; \
+$CellContext`changed = True; 
+                  Which[$CellContext`gain == $CellContext`c1, \
+$CellContext`tour = Join[
+                    Part[$CellContext`tour, 
+                    Span[1, 
+                    Part[$CellContext`tuple, 1]]], 
+                    Part[$CellContext`tour, 
+                    Span[Part[$CellContext`tuple, 2] + 1, 
+                    Part[$CellContext`tuple, 3]]], 
+                    Part[$CellContext`tour, 
+                    Span[Part[$CellContext`tuple, 1] + 1, 
+                    Part[$CellContext`tuple, 2]]], 
+                    Part[$CellContext`tour, 
+                    Span[
+                    Part[$CellContext`tuple, 3] + 1, $CellContext`n + 
+                    1]]], $CellContext`gain == $CellContext`c2, \
+$CellContext`tour = Join[
+                    Part[$CellContext`tour, 
+                    Span[1, 
+                    Part[$CellContext`tuple, 1]]], 
+                    Part[$CellContext`tour, 
+                    Span[
+                    Part[$CellContext`tuple, 2], Part[$CellContext`tuple, 1] + 
+                    1, -1]], 
+                    Part[$CellContext`tour, 
+                    Span[
+                    Part[$CellContext`tuple, 3], Part[$CellContext`tuple, 2] + 
+                    1, -1]], 
+                    Part[$CellContext`tour, 
+                    Span[
+                    Part[$CellContext`tuple, 3] + 1, $CellContext`n + 
+                    1]]], $CellContext`gain == $CellContext`c3, \
+$CellContext`tour = Join[
+                    Part[$CellContext`tour, 
+                    Span[1, 
+                    Part[$CellContext`tuple, 1]]], 
+                    Part[$CellContext`tour, 
+                    Span[Part[$CellContext`tuple, 2] + 1, 
+                    Part[$CellContext`tuple, 3]]], 
+                    Part[$CellContext`tour, 
+                    Span[
+                    Part[$CellContext`tuple, 2], Part[$CellContext`tuple, 1] + 
+                    1, -1]], 
+                    Part[$CellContext`tour, 
+                    Span[
+                    Part[$CellContext`tuple, 3] + 1, $CellContext`n + 
+                    1]]], $CellContext`gain == $CellContext`c4, \
+$CellContext`tour = Join[
+                    Part[$CellContext`tour, 
+                    Span[1, 
+                    Part[$CellContext`tuple, 1]]], 
+                    Part[$CellContext`tour, 
+                    Span[
+                    Part[$CellContext`tuple, 3], Part[$CellContext`tuple, 2] + 
+                    1, -1]], 
+                    Part[$CellContext`tour, 
+                    Span[Part[$CellContext`tuple, 1] + 1, 
+                    Part[$CellContext`tuple, 2]]], 
+                    Part[$CellContext`tour, 
+                    Span[
+                    Part[$CellContext`tuple, 3] + 1, $CellContext`n + 1]]], 
+                    True, 
+                    Print["trouble"]]; Null]; Null, {$CellContext`j, 
+                 Length[$CellContext`triples]}]; 
+              Do[$CellContext`tuple = 
+                 Part[$CellContext`pairs, $CellContext`j]; $CellContext`loss = 
+                 Sum[
+                   $CellContext`pd[
+                    Part[$CellContext`tuple, $CellContext`k], 
+                    Part[$CellContext`tuple, $CellContext`k] + 
+                    1], {$CellContext`k, 2}]; $CellContext`gain = Sum[
+                   $CellContext`pd[
+                   Part[$CellContext`tuple, 1] + $CellContext`k, 
+                    Part[$CellContext`tuple, 
+                    2] + $CellContext`k], {$CellContext`k, 0, 1}]; 
+                If[$CellContext`gain < $CellContext`loss, $CellContext`len = \
+$CellContext`len - $CellContext`loss + $CellContext`gain; \
+$CellContext`changed = True; $CellContext`tour = Join[
+                    Part[$CellContext`tour, 
+                    Span[1, 
+                    Part[$CellContext`tuple, 1]]], 
+                    Part[$CellContext`tour, 
+                    Span[
+                    Part[$CellContext`tuple, 2], Part[$CellContext`tuple, 1] + 
+                    1, -1]], 
+                    Part[$CellContext`tour, 
+                    Span[
+                    Part[$CellContext`tuple, 2] + 1, $CellContext`n + 1]]]; 
+                  Null]; Null, {$CellContext`j, 
+                 Length[$CellContext`pairs]}]; Null]; 
+            If[$CellContext`bestlen > $CellContext`len, $CellContext`bestlen = \
+$CellContext`len; $CellContext`besttour = $CellContext`tour; Null]; Null, {
+            10}]; {$CellContext`bestlen, $CellContext`besttour}], \
+$CellContext`randinit[
+          Pattern[$CellContext`k, 
+           Blank[]]] := Flatten[{1, RandomSample[
+             Range[$CellContext`k - 1]] + 1, 1}], $CellContext`newdata = {
+         "3-Opt", 0.047, 3.384963976164199}, $CellContext`newplot = Graphics[
+          GraphicsComplex[CompressedData["
+1:eJxTTMoPSmViYGAQA2IQXdD/d7PU2+f2B/TnP76+c5/9AnvPhT/vH7JvSMrK
+F564zd6HN7HMK/mSfRV7Npek0wP7DUzKBxwOX7RXWJhgzbv9nb1Hv4f2EufH
+9t+SnhSa1D6wZ7r9QDu79bn9l23Ln1379MJ+x7wvjcvrX9r/OhyZs43hpb3e
+uq4b3ZPf20foOe7qWvTI3umB6ctF397YK1hfUDbTW2vvsDlBMpX3lT2Dl6fK
+wsK99ujuG2ruBQA+hbQi
+           "], {{{}, {}, {
+              Hue[0.67, 0.6, 0.6], 
+              Line[{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}]}, {
+              Hue[0.9060679774997897, 0.6, 0.6], 
+              Line[{12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22}]}}, {{
+              Directive[
+               PointSize[Large], 
+               RGBColor[1, 0, 0]], 
+              
+              Point[{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 
+               17, 18, 19, 20, 21, 22}]}, {}, {}, {}}}], {
+          AspectRatio -> 1, Axes -> True, AxesOrigin -> {0, 0}, ImagePadding -> 
+           20, ImageSize -> {200, 200}, PlotLabel -> "3\[Hyphen]Opt", 
+           PlotRange -> {All, All}, PlotRangeClipping -> True, 
+           PlotRangePadding -> {Automatic, Automatic}}], 
+        Attributes[PlotRange] = {ReadProtected}, $CellContext`plot[
+          Pattern[$CellContext`l, 
+           Blank[]]] := ListLinePlot[{
+           Part[$CellContext`Points, $CellContext`l], 
+           Part[$CellContext`Points, $CellContext`l]}, MeshStyle -> 
+          Directive[
+            PointSize[Large], Red], AxesOrigin -> {0, 0}, Mesh -> All, 
+          PlotRange -> All, AspectRatio -> 1, PlotLabel -> "3\[Hyphen]Opt", 
+          ImageSize -> {200, 200}, ImagePadding -> 
+          20], $CellContext`nummethods = 
+        4, $CellContext`methods = {
+         "OrZweig", "OrOpt", "TwoOpt", "CCA"}, $CellContext`evals[
+          Pattern[$CellContext`method, 
+           Blank[]]] := Part[
+          
+          Timing[$CellContext`e[$CellContext`method] = 
+           FindShortestTour[$CellContext`Points, 
+             Method -> $CellContext`method, DistanceFunction -> 
+             EuclideanDistance]], 1], $CellContext`e["CCA"] = {
+         3.3849639761642, {1, 10, 8, 4, 5, 7, 2, 9, 3, 6}}, $CellContext`e[
+         "OrOpt"] = {
+         3.3849639761642, {1, 10, 8, 4, 5, 7, 2, 9, 3, 6}}, $CellContext`e[
+         "OrZweig"] = {
+         3.3849639761642, {1, 10, 8, 4, 5, 7, 2, 9, 3, 6}}, $CellContext`e[
+         "TwoOpt"] = {
+         3.3849639761642, {1, 10, 8, 4, 5, 7, 2, 9, 3, 
+          6}}, $CellContext`mathtable = {{
+          "OrZweig", 0.17200000000000001`, 3.3849639761642}, {
+          "OrOpt", 0.20299999999999999`, 3.3849639761642}, {
+          "TwoOpt", 0.12500000000000003`, 3.3849639761642}, {
+          "CCA", 0.11000000000000001`, 
+           3.3849639761642}}, $CellContext`order = {1, 10, 8, 4, 5, 7, 2, 9, 
+         3, 6}, $CellContext`closeloop = {1, 10, 8, 4, 5, 7, 2, 9, 3, 6, 
+         1}, $CellContext`mathplot = Graphics[
+          
+          GraphicsComplex[{{0.747693397086989, 0.12002324397252462`}, {
+           0.8141351218851938, 0.11501509796043052`}, {0.9051069788829482, 
+           0.056993190643075176`}, {0.9867610196428751, 0.5823415410790842}, {
+           0.7968328035539889, 0.7813369861815993}, {0.7350364548682082, 
+           0.7796434884055246}, {0.602006992853128, 0.5152837967353594}, {
+           0.2775422931991143, 0.9598451766696918}, {0.2873102336927402, 
+           0.5080685809591465}, {0.1474601781396787, 0.08815118284327106}, {
+           0.747693397086989, 0.12002324397252462`}}, {{{}, {}, {
+              Hue[0.67, 0.6, 0.6], 
+              Line[{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}]}}, {{
+              Directive[
+               PointSize[Large], 
+               RGBColor[1, 0, 0]], 
+              Point[{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}]}, {}, {}}}], {
+          AspectRatio -> 1, Axes -> True, AxesOrigin -> {0, 0}, ImagePadding -> 
+           20, ImageSize -> {200, 200}, PlotLabel -> "OrZweig", 
+           PlotRange -> {All, All}, PlotRangeClipping -> True, 
+           PlotRangePadding -> {
+            Automatic, Automatic}}], $CellContext`alltable = 
+        Grid[{{"Method", "Timing", "Result"}, {
+           "OrZweig", 0.17200000000000001`, 3.3849639761642}, {
+           "OrOpt", 0.20299999999999999`, 3.3849639761642}, {
+           "TwoOpt", 0.12500000000000003`, 3.3849639761642}, {
+           "CCA", 0.11000000000000001`, 3.3849639761642}, {
+           "3-Opt", 0.047, 3.384963976164199}}, 
+          Background -> {{
+            1 -> GrayLevel[0.85], 2 -> RGBColor[0.88, 1, 0.88], 3 -> 
+             RGBColor[1, 1, 0.85]}, None}, Frame -> 
+          All], $CellContext`minmath = 3.3849639761642, $CellContext`judge = 
+        "Tie"}; Typeset`initDone$$ = True); ReleaseHold[
+       HoldComplete[{$CellContext`methods = {
+           "OrZweig", "OrOpt", "TwoOpt", "CCA"}; Null, $CellContext`dist[
+           Pattern[$CellContext`p1, 
+            Blank[]], 
+           Pattern[$CellContext`p2, 
+            Blank[]]] := 
+         Norm[$CellContext`p1 - $CellContext`p2], $CellContext`randinit[
+           Pattern[$CellContext`k, 
+            Blank[]]] := Flatten[{1, RandomSample[
+              Range[$CellContext`k - 1]] + 1, 1}], $CellContext`twoThreeOpt[
+           Pattern[$CellContext`pts, 
+            Blank[]]] := 
+         Module[{$CellContext`n = 
+            Length[$CellContext`pts], $CellContext`pairs, \
+$CellContext`pairdistances, $CellContext`triples, $CellContext`pd, \
+$CellContext`tourLength, $CellContext`tour, $CellContext`len, \
+$CellContext`changed = True, $CellContext`bestlen = 
+            Infinity, $CellContext`besttour, $CellContext`tuple, \
+$CellContext`loss, $CellContext`c1, $CellContext`c2, $CellContext`c3, \
+$CellContext`c4, $CellContext`gain, $CellContext`i = 0}, $CellContext`pairs = 
+            Subsets[
+              Range[$CellContext`n], {2}]; $CellContext`pairs = 
+            Select[$CellContext`pairs, Part[#, 2] - Part[#, 1] >= 
+              2& ]; $CellContext`triples = Subsets[
+              Range[$CellContext`n], {3}]; $CellContext`pairdistances = 
+            Table[
+              Norm[
+              Part[$CellContext`pts, $CellContext`j] - 
+               Part[$CellContext`pts, $CellContext`k]], {$CellContext`j, \
+$CellContext`n}, {$CellContext`k, $CellContext`n}]; $CellContext`pd[
+              Pattern[$CellContext`j, 
+               Blank[]], 
+              Pattern[$CellContext`k, 
+               Blank[]]] := Part[$CellContext`pairdistances, 
+              Part[$CellContext`tour, $CellContext`j], 
+              
+              Part[$CellContext`tour, $CellContext`k]]; \
+$CellContext`tourLength[
+              Pattern[$CellContext`l, 
+               Blank[]]] := Sum[
+              Part[$CellContext`pairdistances, 
+               Part[$CellContext`l, $CellContext`i], 
+               Part[$CellContext`l, $CellContext`i + 1]], {$CellContext`i, 
+               Length[$CellContext`l] - 1}]; 
+           Do[$CellContext`tour = $CellContext`randinit[$CellContext`n]; \
+$CellContext`len = $CellContext`tourLength[$CellContext`tour]; 
+             While[$CellContext`changed, $CellContext`changed = False; 
+               Increment[$CellContext`i]; 
+               Do[$CellContext`tuple = 
+                  Part[$CellContext`pairs, $CellContext`j]; $CellContext`loss = 
+                  Sum[
+                    $CellContext`pd[
+                    Part[$CellContext`tuple, $CellContext`k], 
+                    Part[$CellContext`tuple, $CellContext`k] + 
+                    1], {$CellContext`k, 2}]; $CellContext`gain = Sum[
+                    $CellContext`pd[
+                    Part[$CellContext`tuple, 1] + $CellContext`k, 
+                    Part[$CellContext`tuple, 
+                    2] + $CellContext`k], {$CellContext`k, 0, 1}]; 
+                 If[$CellContext`gain < $CellContext`loss, $CellContext`len = \
+$CellContext`len - $CellContext`loss + $CellContext`gain; \
+$CellContext`changed = True; $CellContext`tour = Join[
+                    Part[$CellContext`tour, 
+                    Span[1, 
+                    Part[$CellContext`tuple, 1]]], 
+                    Part[$CellContext`tour, 
+                    Span[
+                    Part[$CellContext`tuple, 2], Part[$CellContext`tuple, 1] + 
+                    1, -1]], 
+                    Part[$CellContext`tour, 
+                    Span[
+                    Part[$CellContext`tuple, 2] + 1, $CellContext`n + 1]]]; 
+                   Null]; Null, {$CellContext`j, 
+                  Length[$CellContext`pairs]}]; 
+               Do[$CellContext`tuple = 
+                  Part[$CellContext`triples, $CellContext`j]; \
+$CellContext`loss = Sum[
+                    $CellContext`pd[
+                    Part[$CellContext`tuple, $CellContext`k], 
+                    Part[$CellContext`tuple, $CellContext`k] + 
+                    1], {$CellContext`k, 
+                    3}]; $CellContext`c1 = $CellContext`pd[
+                    Part[$CellContext`tuple, 1], Part[$CellContext`tuple, 2] + 
+                    1] + $CellContext`pd[
+                    Part[$CellContext`tuple, 3], Part[$CellContext`tuple, 1] + 
+                    1] + $CellContext`pd[
+                    Part[$CellContext`tuple, 2], Part[$CellContext`tuple, 3] + 
+                    1]; $CellContext`c2 = $CellContext`pd[
+                    Part[$CellContext`tuple, 1], 
+                    Part[$CellContext`tuple, 2]] + $CellContext`pd[
+                    Part[$CellContext`tuple, 1] + 1, 
+                    Part[$CellContext`tuple, 3]] + $CellContext`pd[
+                    Part[$CellContext`tuple, 2] + 1, 
+                    Part[$CellContext`tuple, 3] + 
+                    1]; $CellContext`c3 = $CellContext`pd[
+                    Part[$CellContext`tuple, 1], Part[$CellContext`tuple, 2] + 
+                    1] + $CellContext`pd[
+                    Part[$CellContext`tuple, 3], 
+                    Part[$CellContext`tuple, 2]] + $CellContext`pd[
+                    Part[$CellContext`tuple, 1] + 1, 
+                    Part[$CellContext`tuple, 3] + 
+                    1]; $CellContext`c4 = $CellContext`pd[
+                    Part[$CellContext`tuple, 1], 
+                    Part[$CellContext`tuple, 3]] + $CellContext`pd[
+                    Part[$CellContext`tuple, 2] + 1, 
+                    Part[$CellContext`tuple, 1] + 1] + $CellContext`pd[
+                    Part[$CellContext`tuple, 2], Part[$CellContext`tuple, 3] + 
+                    1]; $CellContext`gain = 
+                  Min[$CellContext`c1, $CellContext`c2, $CellContext`c3, \
+$CellContext`c4]; 
+                 If[$CellContext`gain < $CellContext`loss, $CellContext`len = \
+$CellContext`len - $CellContext`loss + $CellContext`gain; \
+$CellContext`changed = True; 
+                   Which[$CellContext`gain == $CellContext`c1, \
+$CellContext`tour = Join[
+                    Part[$CellContext`tour, 
+                    Span[1, 
+                    Part[$CellContext`tuple, 1]]], 
+                    Part[$CellContext`tour, 
+                    Span[Part[$CellContext`tuple, 2] + 1, 
+                    Part[$CellContext`tuple, 3]]], 
+                    Part[$CellContext`tour, 
+                    Span[Part[$CellContext`tuple, 1] + 1, 
+                    Part[$CellContext`tuple, 2]]], 
+                    Part[$CellContext`tour, 
+                    Span[
+                    Part[$CellContext`tuple, 3] + 1, $CellContext`n + 
+                    1]]], $CellContext`gain == $CellContext`c2, \
+$CellContext`tour = Join[
+                    Part[$CellContext`tour, 
+                    Span[1, 
+                    Part[$CellContext`tuple, 1]]], 
+                    Part[$CellContext`tour, 
+                    Span[
+                    Part[$CellContext`tuple, 2], Part[$CellContext`tuple, 1] + 
+                    1, -1]], 
+                    Part[$CellContext`tour, 
+                    Span[
+                    Part[$CellContext`tuple, 3], Part[$CellContext`tuple, 2] + 
+                    1, -1]], 
+                    Part[$CellContext`tour, 
+                    Span[
+                    Part[$CellContext`tuple, 3] + 1, $CellContext`n + 
+                    1]]], $CellContext`gain == $CellContext`c3, \
+$CellContext`tour = Join[
+                    Part[$CellContext`tour, 
+                    Span[1, 
+                    Part[$CellContext`tuple, 1]]], 
+                    Part[$CellContext`tour, 
+                    Span[Part[$CellContext`tuple, 2] + 1, 
+                    Part[$CellContext`tuple, 3]]], 
+                    Part[$CellContext`tour, 
+                    Span[
+                    Part[$CellContext`tuple, 2], Part[$CellContext`tuple, 1] + 
+                    1, -1]], 
+                    Part[$CellContext`tour, 
+                    Span[
+                    Part[$CellContext`tuple, 3] + 1, $CellContext`n + 
+                    1]]], $CellContext`gain == $CellContext`c4, \
+$CellContext`tour = Join[
+                    Part[$CellContext`tour, 
+                    Span[1, 
+                    Part[$CellContext`tuple, 1]]], 
+                    Part[$CellContext`tour, 
+                    Span[
+                    Part[$CellContext`tuple, 3], Part[$CellContext`tuple, 2] + 
+                    1, -1]], 
+                    Part[$CellContext`tour, 
+                    Span[Part[$CellContext`tuple, 1] + 1, 
+                    Part[$CellContext`tuple, 2]]], 
+                    Part[$CellContext`tour, 
+                    Span[
+                    Part[$CellContext`tuple, 3] + 1, $CellContext`n + 1]]], 
+                    True, 
+                    Print["trouble"]]; Null]; Null, {$CellContext`j, 
+                  Length[$CellContext`triples]}]; 
+               Do[$CellContext`tuple = 
+                  Part[$CellContext`pairs, $CellContext`j]; $CellContext`loss = 
+                  Sum[
+                    $CellContext`pd[
+                    Part[$CellContext`tuple, $CellContext`k], 
+                    Part[$CellContext`tuple, $CellContext`k] + 
+                    1], {$CellContext`k, 2}]; $CellContext`gain = Sum[
+                    $CellContext`pd[
+                    Part[$CellContext`tuple, 1] + $CellContext`k, 
+                    Part[$CellContext`tuple, 
+                    2] + $CellContext`k], {$CellContext`k, 0, 1}]; 
+                 If[$CellContext`gain < $CellContext`loss, $CellContext`len = \
+$CellContext`len - $CellContext`loss + $CellContext`gain; \
+$CellContext`changed = True; $CellContext`tour = Join[
+                    Part[$CellContext`tour, 
+                    Span[1, 
+                    Part[$CellContext`tuple, 1]]], 
+                    Part[$CellContext`tour, 
+                    Span[
+                    Part[$CellContext`tuple, 2], Part[$CellContext`tuple, 1] + 
+                    1, -1]], 
+                    Part[$CellContext`tour, 
+                    Span[
+                    Part[$CellContext`tuple, 2] + 1, $CellContext`n + 1]]]; 
+                   Null]; Null, {$CellContext`j, 
+                  Length[$CellContext`pairs]}]; Null]; 
+             If[$CellContext`bestlen > $CellContext`len, $CellContext`bestlen = \
+$CellContext`len; $CellContext`besttour = $CellContext`tour; Null]; Null, {
+             10}]; {$CellContext`bestlen, $CellContext`besttour}], \
+$CellContext`plot[
+           Pattern[$CellContext`l, 
+            Blank[]]] := ListLinePlot[{
+            Part[$CellContext`Points, $CellContext`l], 
+            Part[$CellContext`Points, $CellContext`l]}, MeshStyle -> Directive[
+             PointSize[Large], Red], AxesOrigin -> {0, 0}, Mesh -> All, 
+           PlotRange -> All, AspectRatio -> 1, PlotLabel -> "3\[Hyphen]Opt", 
+           ImageSize -> {200, 200}, ImagePadding -> 20]}]]; 
+     Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->4975264],
+
+Cell[CellGroupData[{
+
+Cell["CAPTION", "Section",
+ CellFrame->{{0, 0}, {1, 0}},
+ CellFrameColor->RGBColor[0.87, 0.87, 0.87],
+ FontFamily->"Helvetica",
+ FontSize->12,
+ FontWeight->"Bold",
+ FontColor->RGBColor[0.597406, 0, 0.0527047]],
+
+Cell["\<\
+The traveling salesman problem (TSP) is an NP-complete problem. Different \
+approximation algorithms have their advantages and disadvantages. \
+\>", "Text"]
+}, Close]]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ "'s function ",
+ StyleBox["FindShortestTour", "MR"],
+ " offers a choice of four methods (\"OrZweig\", \"OrOpt\", \"TwoOpt\", \"CCA\
+\"), which may yield identical results. "
+}], "Text"],
+
+Cell[TextData[{
+ "This Demonstration provides another TSP algorithm called 3-Opt. Experiments \
+show that the 3-Opt algorithm sometimes finds a better result than any of the \
+four kinds of ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " ",
+ StyleBox["FindShortestTour", "MR"],
+ " methods."
+}], "Text"],
+
+Cell[CellGroupData[{
+
+Cell["DETAILS", "Section",
+ CellFrame->{{0, 0}, {1, 0}},
+ CellFrameColor->RGBColor[0.87, 0.87, 0.87],
+ FontFamily->"Helvetica",
+ FontSize->12,
+ FontWeight->"Bold",
+ FontColor->RGBColor[0.597406, 0, 0.0527047]],
+
+Cell[TextData[{
+ "Snapshot 1: with 30 points, ",
+ StyleBox["FindShortestTour", "MR"],
+ " methods find a shorter result than the 3-Opt method"
+}], "Text"],
+
+Cell[TextData[{
+ "Snapshot 2: with 30 points, both 3-Opt and ",
+ StyleBox["Mathematica'",
+  FontSlant->"Italic"],
+ "s ",
+ StyleBox["FindShortestTour", "MR"],
+ " methods find an optimal result"
+}], "Text"],
+
+Cell[TextData[{
+ "Snapshot 3: with 40 points, 3-Opt finds a shorter result than any of the ",
+ StyleBox["FindShortestTour", "MR"],
+ " methods"
+}], "Text"]
+}, Close]],
+
+Cell[CellGroupData[{
+
+Cell["THIS NOTEBOOK IS THE SOURCE CODE FROM", "Text",
+ CellFrame->{{0, 0}, {0, 0}},
+ CellMargins->{{48, 10}, {4, 28}},
+ CellGroupingRules->{"SectionGrouping", 25},
+ CellFrameMargins->{{48, 48}, {6, 5}},
+ CellFrameColor->RGBColor[0.87, 0.87, 0.87],
+ FontFamily->"Helvetica",
+ FontSize->10,
+ FontWeight->"Bold",
+ FontColor->RGBColor[0.597406, 0, 0.0527047]],
+
+Cell[TextData[{
+ "\"",
+ ButtonBox["Comparing Algorithms for the Traveling Salesman Problem",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/\
+ComparingAlgorithmsForTheTravelingSalesmanProblem/"], None},
+  ButtonNote->
+   "http://demonstrations.wolfram.com/\
+ComparingAlgorithmsForTheTravelingSalesmanProblem/"],
+ "\"",
+ " from ",
+ ButtonBox["the Wolfram Demonstrations Project",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/"], None},
+  ButtonNote->"http://demonstrations.wolfram.com/"],
+ "\[ParagraphSeparator]\[NonBreakingSpace]",
+ ButtonBox["http://demonstrations.wolfram.com/\
+ComparingAlgorithmsForTheTravelingSalesmanProblem/",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/\
+ComparingAlgorithmsForTheTravelingSalesmanProblem/"], None},
+  ButtonNote->
+   "http://demonstrations.wolfram.com/\
+ComparingAlgorithmsForTheTravelingSalesmanProblem/"]
+}], "Text",
+ CellMargins->{{48, Inherited}, {0, Inherited}},
+ FontFamily->"Verdana",
+ FontSize->10,
+ FontColor->GrayLevel[0.5]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Contributed by: ",
+ ButtonBox["Frederick Wu",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/search.html?author=Frederick+Wu"], 
+    None}]
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{66, 48}, {2, 4}},
+ FontFamily->"Verdana",
+ FontSize->10,
+ FontColor->GrayLevel[0.6],
+ CellID->845930832],
+
+Cell[TextData[{
+ "Additional contributions by: ",
+ ButtonBox["Daniel Lichtblau",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/search.html?author=Daniel+\
+Lichtblau"], None}]
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{66, 48}, {2, 4}},
+ FontFamily->"Verdana",
+ FontSize->10,
+ FontColor->GrayLevel[0.6],
+ CellID->14329209],
+
+Cell[TextData[{
+ "Based on a program by: ",
+ ButtonBox["Sidong Zeng",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/search.html?author=Sidong+Zeng"], 
+    None}]
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{66, 48}, {2, 4}},
+ FontFamily->"Verdana",
+ FontSize->10,
+ FontColor->GrayLevel[0.6],
+ CellID->880432732]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "A full-function Wolfram ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " system (Version 6 or higher) is required to edit this notebook.\n",
+ StyleBox[ButtonBox["GET WOLFRAM MATHEMATICA \[RightGuillemet]",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://www.wolfram.com/products/mathematica/"], None},
+  ButtonNote->"http://www.wolfram.com/products/mathematica/"],
+  FontFamily->"Helvetica",
+  FontWeight->"Bold",
+  FontSlant->"Italic",
+  FontColor->RGBColor[1, 0.42, 0]]
+}], "Text",
+ CellFrame->True,
+ CellMargins->{{48, 68}, {8, 28}},
+ CellFrameMargins->12,
+ CellFrameColor->RGBColor[0.87, 0.87, 0.87],
+ CellChangeTimes->{3.3750111182355957`*^9},
+ ParagraphSpacing->{1., 1.},
+ FontFamily->"Verdana",
+ FontSize->10,
+ FontColor->GrayLevel[0.411765],
+ Background->RGBColor[1, 1, 1]],
+
+Cell[TextData[{
+ "\[Copyright] ",
+ StyleBox[ButtonBox["Wolfram Demonstrations Project & Contributors",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/"], None},
+  ButtonNote->"http://demonstrations.wolfram.com/"],
+  FontColor->GrayLevel[0.6]],
+ "\[ThickSpace]\[ThickSpace]\[ThickSpace]|\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+ StyleBox[ButtonBox["Terms of Use",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/termsofuse.html"], None},
+  ButtonNote->"http://demonstrations.wolfram.com/termsofuse.html"],
+  FontColor->GrayLevel[0.6]],
+ "\[ThickSpace]\[ThickSpace]\[ThickSpace]|\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+ StyleBox[ButtonBox["Make a new version of this Demonstration \
+\[RightGuillemet]",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/participate/upload.jsp?id=\
+ComparingAlgorithmsForTheTravelingSalesmanProblem"], None},
+  ButtonNote->None],
+  FontColor->GrayLevel[0.6]]
+}], "Text",
+ CellFrame->{{0, 0}, {0, 0.5}},
+ CellMargins->{{48, 10}, {20, 50}},
+ CellFrameMargins->{{6, 0}, {6, 6}},
+ CellFrameColor->GrayLevel[0.6],
+ FontFamily->"Verdana",
+ FontSize->9,
+ FontColor->GrayLevel[0.6]]
+}, Open  ]]
+}, Open  ]]
+},
+Editable->True,
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+CellInsertionPointCell->None,
+WindowSize->{710, 650},
+WindowMargins->{{Inherited, Inherited}, {Inherited, 0}},
+WindowElements->{
+ "StatusArea", "MemoryMonitor", "MagnificationPopUp", "VerticalScrollBar", 
+  "MenuBar"},
+WindowTitle->"Comparing Algorithms for the Traveling Salesman Problem - \
+Source",
+DockedCells->{},
+CellContext->Notebook,
+FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (November 7, 2010)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[657, 23, 175, 3, 70, "Section"],
+Cell[835, 28, 3700, 64, 70, "Section"],
+Cell[4538, 94, 349, 10, 70, "Input",
+ InitializationCell->True,
+ CellID->145497842],
+Cell[4890, 106, 1703, 28, 70, "Input",
+ CellID->1693220169],
+Cell[6596, 136, 1918, 33, 70, "Input",
+ CellID->1564341847],
+Cell[8517, 171, 24580, 557, 70, "Input",
+ CellID->2142234290],
+Cell[33100, 730, 3139, 57, 70, "Input",
+ CellID->2013022531],
+Cell[36242, 789, 8948, 222, 70, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[45227, 1016, 31782, 613, 70, "Output",
+ CellID->4975264],
+Cell[CellGroupData[{
+Cell[77034, 1633, 209, 6, 70, "Section"],
+Cell[77246, 1641, 166, 3, 70, "Text"]
+}, Close]]
+}, Open  ]],
+Cell[77438, 1648, 251, 7, 70, "Text"],
+Cell[77692, 1657, 309, 9, 70, "Text"],
+Cell[CellGroupData[{
+Cell[78026, 1670, 209, 6, 70, "Section"],
+Cell[78238, 1678, 153, 4, 70, "Text"],
+Cell[78394, 1684, 204, 7, 70, "Text"],
+Cell[78601, 1693, 154, 4, 70, "Text"]
+}, Close]],
+Cell[CellGroupData[{
+Cell[78791, 1702, 355, 9, 70, "Text",
+ CellGroupingRules->{"SectionGrouping", 25}],
+Cell[79149, 1713, 1095, 31, 70, "Text"],
+Cell[CellGroupData[{
+Cell[80269, 1748, 366, 13, 70, "Text",
+ CellID->845930832],
+Cell[80638, 1763, 383, 13, 70, "Text",
+ CellID->14329209],
+Cell[81024, 1778, 371, 13, 70, "Text",
+ CellID->880432732]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[81432, 1796, 815, 24, 70, "Text"],
+Cell[82250, 1822, 1221, 33, 70, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+(* NotebookSignature 0SNL0cxb3GR69DTjUHPVAb7G *)
