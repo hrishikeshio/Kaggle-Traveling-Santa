@@ -12,6 +12,6 @@ def intersect(file1,type1,file2,type2):
 	return p1s.intersection(p2s)
 
 if __name__=="__main__":
-	res=intersect("../results/besttour_tot.tsp","tsp","../results/besttour_tot2.tsp","tsp")
+	res=intersect("../results/besttour_tot.tsp","tsp","../results/hilbert_santa_path.csv","csv")
 	print len(res)
 	#print res
