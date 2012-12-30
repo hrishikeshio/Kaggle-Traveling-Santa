@@ -3,7 +3,8 @@ import math
 import time
 import numpy as np 
 coords=[]
-with open("../raw/santa_cities.csv", "rb") as f:
+#with open("../raw/santa_cities.csv", "rb") as f:
+with open("temp/cut0", "rb") as f:
     for i in csv.reader(f):
         coords.append([int(j) for j in i] )
 #coords=np.array(coords)
