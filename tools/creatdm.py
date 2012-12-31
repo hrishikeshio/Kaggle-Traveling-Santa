@@ -1,3 +1,8 @@
+"""
+Creates distance matrix
+Current state: defunct since ?
+"""
+
 import csv
 import math
 import time

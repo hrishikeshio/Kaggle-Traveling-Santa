@@ -1,3 +1,7 @@
+"""
+Scipy distance matrix function
+Defunct because of out of memory on huge matrix
+"""
 from scipy.spatial.distance import pdist,squareform
 import csv
 import math

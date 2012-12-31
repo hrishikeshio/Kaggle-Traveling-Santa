@@ -1,3 +1,6 @@
+"""
+Runs LKH one by one
+"""
 import csv
 import subprocess
 import sys
