@@ -39,7 +39,7 @@ if __name__ == "__main__":
 	path=extractpath("../results/besttour_tot.tsp","tsp")
 	print len(path)
 	print dist(path)
-	path2=extractpath("../results/besttour_tot2.tsp","tsp")
+	path2=extractpath("../tools/temp/fans.csv","csv")
 	#path=extractpath("../raw/random_paths_benchmark.csv","csv")
 	print len(path2)
 	#print path[142720:142725]
