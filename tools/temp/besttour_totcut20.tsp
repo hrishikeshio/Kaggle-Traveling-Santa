@@ -1,6 +1,6 @@
 NAME : pr2392.615888.tour
 COMMENT : Length = 615888
-COMMENT : Found by LKH [Keld Helsgaun] Mon Dec 31 13:24:46 2012
+COMMENT : Found by LKH [Keld Helsgaun] Tue Jan  1 00:59:51 2013
 TYPE : TOUR
 DIMENSION : 18847
 TOUR_SECTION
