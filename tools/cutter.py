@@ -13,11 +13,11 @@ coords=np.array(coords)
 for i in range(6):
 	for j in range(6):
 
-		with open("temp/cut"+str(i)+str(j)+".csv","wb") as f:
+		with open("../LKH/cut"+str(i)+str(j)+".csv","wb") as f:
 			logx=np.logical_and(coords[:,1]>=i*3334,coords[:,1]<(i+1)*3334)
 			logy=np.logical_and(coords[:,2]>=j*3334,coords[:,2]<(j+1)*3334)
 			logass=np.logical_and(logx,logy)
-			coords[logass,0]=[k+1 for k in range(len(coords[logass]))]
+			#coords[logass,0]=[k+1 for k in range(len(coords[logass]))]
 			csv.writer(f).writerows(coords[logass])
 			h=open("temp/cut"+str(i)+str(j)+".tsp","wb")
 			h.write("""NAME : pr2392
@@ -30,7 +30,7 @@ NODE_COORD_SECTION
 			csv.writer(h,delimiter=' ').writerows(coords[logass])
 			h.close()
 			g=open("../LKH/cut"+str(i)+str(j)+".par","wb")
-			g.write("""PROBLEM_FILE = cut"""+str(i)+str(j)+".tsp"+"""
+			g.write("""PROBLEM_FILE = """+str(i)+str(j)+"dm.tsp"+"""
 CANDIDATE_FILE = candidates_totcut"""+str(i)+str(j)+".tsp"+"""
 INITIAL_TOUR_ALGORITHM = NEAREST-NEIGHBOR
 RUNS = 1

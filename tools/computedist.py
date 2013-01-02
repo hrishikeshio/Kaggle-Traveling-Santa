@@ -37,6 +37,6 @@ if __name__ == "__main__":
 	print len(path)
 	print dist(path)
 	
-	path2=extractpath("../tools/temp/fans.csv","csv")
+	path2=extractpath("../LKH/fans.csv","csv")
 	print len(path2)
 	print dist(path2)
