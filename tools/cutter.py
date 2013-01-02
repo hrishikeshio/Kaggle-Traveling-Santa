@@ -18,19 +18,22 @@ for i in range(6):
 			logy=np.logical_and(coords[:,2]>=j*3334,coords[:,2]<(j+1)*3334)
 			logass=np.logical_and(logx,logy)
 			#coords[logass,0]=[k+1 for k in range(len(coords[logass]))]
+			fmapper=open("../LKH/mapper"+str(i)+str(j)+".csv","wb")
+			csv.writer(fmapper).writerows(zip([k+1 for k in range(len(coords[logass]))],coords[logass,0]))
+			fmapper.close()
 			csv.writer(f).writerows(coords[logass])
-			h=open("temp/cut"+str(i)+str(j)+".tsp","wb")
-			h.write("""NAME : pr2392
-COMMENT : file cut by cutter.py
-TYPE : TSP
-DIMENSION :"""+str(len(coords[logass]))+"""
-EDGE_WEIGHT_TYPE : EUC_2D
-NODE_COORD_SECTION
-""")
-			csv.writer(h,delimiter=' ').writerows(coords[logass])
-			h.close()
+			#h=open("temp/cut"+str(i)+str(j)+".tsp","wb")
+			#h.write("""NAME : pr2392
+#COMMENT : file cut by cutter.py
+#TYPE : TSP
+#DIMENSION :"""+str(len(coords[logass]))+"""
+#EDGE_WEIGHT_TYPE : EUC_2D
+#NODE_COORD_SECTION
+#""")
+			#csv.writer(h,delimiter=' ').writerows(coords[logass])
+			#h.close()
 			g=open("../LKH/cut"+str(i)+str(j)+".par","wb")
-			g.write("""PROBLEM_FILE = """+str(i)+str(j)+"dm.tsp"+"""
+			g.write("""PROBLEM_FILE =dm"""+str(i)+str(j)+".tsp"+"""
 CANDIDATE_FILE = candidates_totcut"""+str(i)+str(j)+".tsp"+"""
 INITIAL_TOUR_ALGORITHM = NEAREST-NEIGHBOR
 RUNS = 1
