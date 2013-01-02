@@ -7,7 +7,7 @@ import csv
 import math
 import time
 import numpy as np 
-
+from computedist import extractpath
 	#with open("../raw/santa_cities.csv", "rb") as f:
 for c in range(6):
 	for d in range(6):
@@ -37,8 +37,21 @@ EDGE_WEIGHT_SECTION
 			#sans=squareform(ans)
 
 			sans2=[]
-
 			sans2=[int(b) for b in ans]
+			fans1l1=extractpath("../tools/temp/fans.csv","csv")
+
+
+			fans1l2=[-1]+(fans1l1)
+
+			fans1=zip(fans1l1,fans1l2)
+
+			print fans1[1][1]
+			for pair in fans1:
+				if pair in sans2:
+					
+			exit()
+			#fans1s=set([frozenset(i)for i in p1])
+
 			ans=[]
 		#	csv.writer(f,delimiter=" ").writerows(sans2)
 			print problem
