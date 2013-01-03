@@ -36,14 +36,15 @@ for c in range(6):
 		if secondpath:
 			fans1l1=extractpath("../LKH/besttour_totcut"+problem+".tsp","tsp")
 			fans1l2=[-1]+(fans1l1)
+
 			fans1=zip(fans1l1,fans1l2)
 			#print fans1[1:5]
 			
-			#exit()
+
 			for i in fans1[1:]:
 				lower,higher= (i[0],i[1]) if  (i[0]<i[1]) else (i[1],i[0])
 				idx=(lower*higher-lower*(lower+1)/2)-1			
-				sans2[idx]=10000
+				sans2[idx]=1000000
 		"""
 		011111
 		001111
@@ -72,3 +73,5 @@ for c in range(6):
 					"EDGE_WEIGHT_SECTION\n")
 		
 			csv.writer(ff,delimiter=" ").writerows(fans)
+		with open("../LKH/temp/dm2p"+problem+".csv","wb") as ff:
+			csv.writer(ff,delimiter=",").writerows(fans)
