@@ -13,9 +13,9 @@ def intersect(file1,type1,file2,type2):
 	p2l2=[-1]+(p2l1)
 	p2=zip(p2l1,p2l2)
 	p2s=set([frozenset(i)for i in p2])
-	return p1s.intersection(p2s)
+	return list(p1s.intersection(p2s))
 
 if __name__=="__main__":
-	res=intersect("../results/besttour_tot.tsp","tsp","../tools/temp/fans.csv","csv")
+	res=intersect("../LKH/besttour_totcut00.tsp","tsp","../LKH/path1/besttour_totcut00.tsp","tsp")
 	print len(res)
-	#print res
+	print res[:5]

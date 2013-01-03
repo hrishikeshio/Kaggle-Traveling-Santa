@@ -1,6 +1,6 @@
 NAME : cutter.111238.tour
 COMMENT : Length = 111238
-COMMENT : Found by LKH [Keld Helsgaun] Wed Jan  2 23:37:17 2013
+COMMENT : Found by LKH [Keld Helsgaun] Thu Jan  3 11:23:49 2013
 TYPE : TOUR
 DIMENSION : 2140
 TOUR_SECTION

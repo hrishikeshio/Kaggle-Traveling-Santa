@@ -14,7 +14,7 @@ for c in range(6):
 		
 		#Read coords
 		coords=[]
-		with open("../LKH/cut"+problem+".csv", "rb") as f:
+		with open("../LKH/temp/cut"+problem+".csv", "rb") as f:
 		    for i in csv.reader(f):
 		        coords.append([int(j) for j in i[1:]])
 		print len(coords)
@@ -26,21 +26,24 @@ for c in range(6):
 		mapper={}
 		
 		#Read mapper
-		with open("../LKH/mapper"+problem+".csv", "rb") as f:
+		with open("../LKH/temp/mapper"+problem+".csv", "rb") as f:
 			for i in csv.reader(f):
 				mapper[int(i[1])]=int(i[0])
 		
 		#fans1l1=extractpath("../tools/temp/fans.csv","csv")
-		fans1l1=extractpath("../LKH/besttour_totcut"+problem+".tsp","tsp")
-		fans1l2=[-1]+(fans1l1)
-		fans1=zip(fans1l1,fans1l2)
-		#print fans1[1:5]
 		print problem
-		#exit()
-		for i in fans1[1:]:
-			lower,higher= (i[0],i[1]) if  (i[0]<i[1]) else (i[1],i[0])
-			idx=(lower*higher-lower*(lower+1)/2)-1			
-			sans2[idx]=10000
+		secondpath=True
+		if secondpath:
+			fans1l1=extractpath("../LKH/besttour_totcut"+problem+".tsp","tsp")
+			fans1l2=[-1]+(fans1l1)
+			fans1=zip(fans1l1,fans1l2)
+			#print fans1[1:5]
+			
+			#exit()
+			for i in fans1[1:]:
+				lower,higher= (i[0],i[1]) if  (i[0]<i[1]) else (i[1],i[0])
+				idx=(lower*higher-lower*(lower+1)/2)-1			
+				sans2[idx]=10000
 		"""
 		011111
 		001111
@@ -59,7 +62,7 @@ for c in range(6):
 		sans2=[]
 		
 		#Write distance matrix
-		with open("../LKH/dm"+problem+".tsp","wb") as ff:
+		with open("../LKH/dm2p"+problem+".tsp","wb") as ff:
 			ff.write("NAME : cutter\n"+\
 					"TYPE : TSP\n"+\
 					"DIMENSION : "+str(len(coords))+"\n"+\
