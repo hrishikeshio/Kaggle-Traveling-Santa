@@ -43,17 +43,28 @@ for c in range(6):
 
 			for i in fans1[1:]:
 				lower,higher= (i[0],i[1]) if  (i[0]<i[1]) else (i[1],i[0])
+				lower+=1
+				higher+=1
 				idx=(lower*higher-lower*(lower+1)/2)-1			
 				sans2[idx]=1000000
-		"""
+		"""  5
 		011111
 		001111
-		000111
+	   2000111
 		000011
 		000001
-		n=(i*j-i(i+1)/2)-1
+		n=(i*j-i*(i+1)/2)-1
+		=2*5-2*3/2-1
+		=10-3-1
+		=6
 		=3*6-3*4/2
 		=12
+		actual 11
+		=(i+1)(j+1)-(i+1)*(i+2)/2 -1
+		=3*6-3*4/2 -1
+		=18-6-1
+		=11
+
 		"""
 		start=0
 		fans=[]
