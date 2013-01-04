@@ -8,6 +8,7 @@ import math
 import time
 import numpy as np 
 from computedist import extractpath
+secondpath=False
 for c in range(6):
 	for d in range(6):
 		problem=str(c)+str(d)
@@ -32,7 +33,7 @@ for c in range(6):
 		
 		#fans1l1=extractpath("../tools/temp/fans.csv","csv")
 		print problem
-		secondpath=True
+
 		if secondpath:
 			fans1l1=extractpath("../LKH/besttour_totcut"+problem+".tsp","tsp")
 			fans1l2=[-1]+(fans1l1)
@@ -45,14 +46,20 @@ for c in range(6):
 				lower,higher= (i[0],i[1]) if  (i[0]<i[1]) else (i[1],i[0])
 				lower+=1
 				higher+=1
-				idx=(lower*higher-lower*(lower+1)/2)-1			
-				sans2[idx]=1000000
+				idx=(lower*higher-lower*(lower+1)/2)-1	
+				try:		
+					sans2[idx]=1000000
+				except:
+					print lower,higher,idx,len(sans2)
+
 		"""  5
 		011111
 		001111
 	   2000111
 		000011
-		000001
+	   4000001
+	   act14
+	   5*6 -5*6/2-1=14
 		n=(i*j-i*(i+1)/2)-1
 		=2*5-2*3/2-1
 		=10-3-1
@@ -74,7 +81,7 @@ for c in range(6):
 		sans2=[]
 		
 		#Write distance matrix
-		with open("../LKH/dm2p"+problem+".tsp","wb") as ff:
+		with open("../LKH/dm"+problem+".tsp","wb") as ff:
 			ff.write("NAME : cutter\n"+\
 					"TYPE : TSP\n"+\
 					"DIMENSION : "+str(len(coords))+"\n"+\
@@ -84,5 +91,5 @@ for c in range(6):
 					"EDGE_WEIGHT_SECTION\n")
 		
 			csv.writer(ff,delimiter=" ").writerows(fans)
-		with open("../LKH/temp/dm2p"+problem+".csv","wb") as ff:
+		with open("../LKH/temp/dm"+problem+".csv","wb") as ff:
 			csv.writer(ff,delimiter=",").writerows(fans)
