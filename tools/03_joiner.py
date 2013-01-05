@@ -12,7 +12,7 @@ for i in range(6):
 	for j in range(6):
 		problem=str(i)+str(j)
 		orig=[]
-		with open("../LKH/cut"+problem+".csv","rb") as f:
+		with open("../LKH/temp/cut"+problem+".csv","rb") as f:
 
 			for k in csv.reader(f):
 				#print k
@@ -26,7 +26,7 @@ for i in range(6):
 			#print lines[-5:-2]
 			ans=[int(word.strip())-1 for word in ans]
 			
-		with open("../LKH/ans2p"+problem+".csv","wb") as f:
+		with open("../LKH/ans2"+problem+".csv","wb") as f:
 			csv.writer(f).writerows([[orig[m][0]] for m in ans])
 
 fans=[]
@@ -37,9 +37,11 @@ Add all solutions in array fans
 
 for i in range(6):
 	for j in range(6):
-		problem=str(i)+str(j)
-		with open("../LKH/ans2p"+problem+".csv","rb") as f:
-			fans=fans+[k for k in csv.reader(f)]
+		problem=str(j)+str(i)
+		with open("../LKH/ans2"+problem+".csv","rb") as f:
+			add=[k for k in csv.reader(f)]
+			add.reverse()
+			fans+=add
 fanset=set([])
 
 """
@@ -54,6 +56,6 @@ for i in range(150000):
 """
 write final solutions
 """
-with open("../LKH/fans2p.csv","wb") as f:
+with open("../LKH/results/fans3.csv","wb") as f:
 	csv.writer(f).writerow(["path"])
 	csv.writer(f).writerows(fans)

@@ -31,12 +31,23 @@ def dist(path):
 		dist+=euc(coords[path[i]],coords[path[i+1]])
 	return dist
 
+def validate(path):
+	print len(path)
+	for i in range(1,150001):
+		if not i in path:
+			print i,"not in path"
+	
+	assert len(path)==150000
+
+
+
 
 if __name__ == "__main__":
-	path=extractpath("../LKH/fans.csv","csv")
+	path=extractpath("../LKH/results/fans.csv","csv")
 	print len(path)
 	print dist(path)
-	
-	path2=extractpath("../LKH/fans2p.csv","csv")
+	validate(path)
+	path2=extractpath("../LKH/results/fans2p.csv","csv")
 	print len(path2)
 	print dist(path2)
+	validate(path2)

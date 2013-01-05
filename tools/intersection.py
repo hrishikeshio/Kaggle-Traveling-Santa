@@ -16,6 +16,14 @@ def intersect(file1,type1,file2,type2):
 	return list(p1s.intersection(p2s))
 
 if __name__=="__main__":
-	res=intersect("../LKH/besttour_totcut00.tsp","tsp","../LKH/path1/besttour_totcut00.tsp","tsp")
-	print len(res)
-	print res[:5]
+	for i in range(6):
+		for j in range(6):
+			problem=str(i)+str(j)
+			print problem
+			res=intersect("../LKH/besttour_totcut"+problem+".tsp","tsp","../LKH/path1/besttour_totcut"+problem+".tsp","tsp")
+			print len(res)
+			print res[:5]
+	#res=intersect("../LKH/besttour_totcut03.tsp","tsp","../LKH/path1/besttour_totcut03.tsp","tsp")
+	res=intersect("../LKH/results/fans.csv","csv","../LKH/results/fans3.csv","csv")
+	print "fin",len(res)
+	print res
