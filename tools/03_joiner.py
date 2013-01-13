@@ -56,6 +56,6 @@ for i in range(150000):
 """
 write final solutions
 """
-with open("../LKH/results/mingle/fans2.csv","wb") as f:
+with open("../LKH/results/mingle20/fans2.csv","wb") as f:
 	csv.writer(f).writerow(["path2"])
 	csv.writer(f).writerows(fans)
