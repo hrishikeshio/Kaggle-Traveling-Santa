@@ -43,11 +43,12 @@ def validate(path):
 
 
 if __name__ == "__main__":
-	path=extractpath("../LKH/results/fans.csv","csv")
+	path=extractpath("../LKH/results/walk/fans2.csv","csv")
 	print len(path)
+	print path[:5]
 	print dist(path)
-	validate(path)
-	path2=extractpath("../LKH/results/fans2p.csv","csv")
+	#validate(path)
+	path2=extractpath("../LKH/results/walk/fans3.csv","csv")
 	print len(path2)
 	print dist(path2)
-	validate(path2)
+	#validate(path2)

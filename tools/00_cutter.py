@@ -33,13 +33,13 @@ for i in range(6):
 			#csv.writer(h,delimiter=' ').writerows(coords[logass])
 			#h.close()
 			g=open("../LKH/cut"+str(i)+str(j)+".par","wb")
-			g.write("""PROBLEM_FILE =dm2p"""+str(i)+str(j)+".tsp"+"""
+			g.write("""PROBLEM_FILE =dm"""+str(i)+str(j)+".tsp"+"""
 #CANDIDATE_FILE = candidates_totcut"""+str(i)+str(j)+".tsp"+"""
 INITIAL_TOUR_ALGORITHM = NEAREST-NEIGHBOR
 RUNS = 1
 SEED = 1
 MAX_CANDIDATES = 6
-TIME_LIMIT = 10
+TIME_LIMIT = 20
 TOUR_FILE = besttour_totcut"""+str(i)+str(j)+".tsp"+"""
 """)
 			g.close()

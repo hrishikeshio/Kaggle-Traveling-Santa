@@ -1,8 +1,8 @@
 import csv
 
-with open("../LKH/results/fans.csv","rb") as f:
-	with open("../LKH/results/fans3.csv","rb") as g:
-		with open("../LKH/results/subm4.csv","wb") as h:
+with open("../LKH/results/mingle/mingle1.csv","rb") as f:
+	with open("../LKH/results/mingle/mingle2.csv","rb") as g:
+		with open("../LKH/results/mingle/minglesubm8.csv","wb") as h:
 			fr=csv.reader(f)
 			gr=csv.reader(g)
 			p1=[]
