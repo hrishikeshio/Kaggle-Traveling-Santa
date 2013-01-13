@@ -2,7 +2,7 @@ import csv
 
 with open("../LKH/results/mingle20/mingle1.csv","rb") as f:
 	with open("../LKH/results/mingle20/mingle2.csv","rb") as g:
-		with open("../LKH/results/mingle20/minglesubm10.csv","wb") as h:
+		with open("../LKH/results/mingle20/minglesubm12.csv","wb") as h:
 			fr=csv.reader(f)
 			gr=csv.reader(g)
 			p1=[]

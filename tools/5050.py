@@ -9,9 +9,11 @@ for i in range(6):
 	for j in range(6):
 		problem=str(i)+str(j)
 		#path=2
-		path=1 if j<2 else 2
-		#path=1 if cnt%2==0 else 2
-		cnt+=1
+		#path=1 if i<3 else 2
+		path=2 if ((i%2==0 and j%2==0) or (i%2==1 and j%2==1) ) else 1
+		
+		#path=2 if cnt%2==0 else 1
+		#cnt+=1
 		with open("../LKH/path"+str(path)+"/ans"+problem+".csv","rb") as f:
 			add=[k for k in csv.reader(f)]
 			#add.reverse()
@@ -26,10 +28,11 @@ cnt=0
 for i in range(6):
 	for j in range(6):
 		problem=str(j)+str(i)
-		path=1
-		path=2 if i<2 else 1
+		#path=1
+		#path=2 if j<3 else 1
+		path=1 if ((i%2==0 and j%2==0) or (i%2==1 and j%2==1) ) else 2
 		#path=2 if (cnt)%2==0 else 1
-		cnt+=1
+		#cnt+=1
 		with open("../LKH/path"+str(path)+"/ans"+problem+".csv","rb") as f:
 			add=[k for k in csv.reader(f)]
 			add.reverse()
