@@ -15,8 +15,8 @@ def extractpath(file,type):
 	return path
 def euc(c1,c2):
 	"""Computes euclidean distance"""
-	x1,y1=c1[0],c1[1]
-	x2,y2=c2[0],c2[1]
+	x1,y1=int(c1[0]),int(c1[1])
+	x2,y2=int(c2[0]),int(c2[1])
 	return math.sqrt((x2-x1)**2+(y2-y1)**2)
 
 def dist(path):

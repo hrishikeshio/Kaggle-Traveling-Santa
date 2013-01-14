@@ -5,11 +5,18 @@ Cuts map into pieces of 3334x3334
 import numpy as np 
 import csv
 coords=[]
+"""
+Read raw data
+"""
 with open("../raw/santa_cities.csv", "rb") as f:
     for i in csv.reader(f):
         coords.append([int(j) for j in i] )
 
 coords=np.array(coords)
+"""
+Cut it
+"""
+
 for i in range(6):
 	for j in range(6):
 
@@ -17,29 +24,20 @@ for i in range(6):
 			logx=np.logical_and(coords[:,1]>=i*3334,coords[:,1]<(i+1)*3334)
 			logy=np.logical_and(coords[:,2]>=j*3334,coords[:,2]<(j+1)*3334)
 			logass=np.logical_and(logx,logy)
-			#coords[logass,0]=[k+1 for k in range(len(coords[logass]))]
+			#create mapper files which map between original names and new names
 			fmapper=open("../LKH/temp/mapper"+str(i)+str(j)+".csv","wb")
 			csv.writer(fmapper).writerows(zip([k+1 for k in range(len(coords[logass]))],coords[logass,0]))
 			fmapper.close()
 			csv.writer(f).writerows(coords[logass])
-			#h=open("temp/cut"+str(i)+str(j)+".tsp","wb")
-			#h.write("""NAME : pr2392
-#COMMENT : file cut by cutter.py
-#TYPE : TSP
-#DIMENSION :"""+str(len(coords[logass]))+"""
-#EDGE_WEIGHT_TYPE : EUC_2D
-#NODE_COORD_SECTION
-#""")
-			#csv.writer(h,delimiter=' ').writerows(coords[logass])
-			#h.close()
+			#Create .par files for LKH			
 			g=open("../LKH/cut"+str(i)+str(j)+".par","wb")
-			g.write("""PROBLEM_FILE =dm2p"""+str(i)+str(j)+".tsp"+"""
+			g.write("""PROBLEM_FILE =dm"""+str(i)+str(j)+".tsp"+"""
 #CANDIDATE_FILE = candidates_totcut"""+str(i)+str(j)+".tsp"+"""
 INITIAL_TOUR_ALGORITHM = NEAREST-NEIGHBOR
 RUNS = 1
 SEED = 1
 MAX_CANDIDATES = 6
-TIME_LIMIT = 20
+TIME_LIMIT = 1
 TOUR_FILE = besttour_totcut"""+str(i)+str(j)+".tsp"+"""
 """)
 			g.close()

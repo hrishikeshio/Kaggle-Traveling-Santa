@@ -1,3 +1,6 @@
+"""
+Combines 2 paths using hardwired rules
+"""
 fans=[]
 from computedist import dist, validate
 """
@@ -6,15 +9,12 @@ Add all solutions in array fans
 import csv
 cnt=0
 for i in range(6):
-	for j in range(6):
+	jrange=range(6) if i%2==1 else range(5,-1,-1)
+	for j in jrange:
 		problem=str(i)+str(j)
-		#path=2
-		#path=1 if i<3 else 2
 		path=2 if ((i%2==0 and j%2==0) or (i%2==1 and j%2==1) ) else 1
-		
-		#path=2 if cnt%2==0 else 1
-		#cnt+=1
-		with open("../LKH/path"+str(path)+"/ans"+problem+".csv","rb") as f:
+		#path=2 if ((i%3==0 and j%3==0) or (i%3==1 and j%3==1) ) else 1
+		with open("../LKH/s1path"+str(path)+"/ans"+problem+".csv","rb") as f:
 			add=[k for k in csv.reader(f)]
 			#add.reverse()
 			fans+=add
@@ -25,25 +25,17 @@ fans2=[]
 Add all solutions in array fans
 """
 cnt=0
-for i in range(6):
-	for j in range(6):
-		problem=str(j)+str(i)
-		#path=1
-		#path=2 if j<3 else 1
+for j in range(6):
+	irange=range(6) if i%2==1 else range(5,-1,-1)
+	for i in irange:
+		problem=str(i)+str(j)
 		path=1 if ((i%2==0 and j%2==0) or (i%2==1 and j%2==1) ) else 2
-		#path=2 if (cnt)%2==0 else 1
-		#cnt+=1
-		with open("../LKH/path"+str(path)+"/ans"+problem+".csv","rb") as f:
+		with open("../LKH/s1path"+str(path)+"/ans"+problem+".csv","rb") as f:
 			add=[k for k in csv.reader(f)]
-			add.reverse()
+			add.reverse() ###########REMOVE THIS??
 			fans2+=add
 
-'''	for j in range(3,6):
-		problem=str(i)+str(j)
-		with open("../LKH/path2/ans"+problem+".csv","rb") as f:
-			add=[k for k in csv.reader(f)]
-			add.reverse()
-			fans2+=add'''
+
 print len(fans2)
 fans1i=[int(i[0]) for i in fans]
 fans2i=[int(i[0]) for i in fans2]
@@ -60,10 +52,10 @@ print dist(fans2ip1)
 #print fans1i[:5]
 fans1iw=[[i] for i in fans1i]
 fans2iw=[[i] for i in fans2i]
-with open("../LKH/results/mingle20/mingle1.csv","wb") as f:
+with open("../LKH/results/minglead/mingle1.csv","wb") as f:
 	csv.writer(f).writerow(["path1"])
 	csv.writer(f).writerows(fans1iw)
 
-with open("../LKH/results/mingle20/mingle2.csv","wb") as f:
+with open("../LKH/results/minglead/mingle2.csv","wb") as f:
 	csv.writer(f).writerow(["path2"])
 	csv.writer(f).writerows(fans2iw)

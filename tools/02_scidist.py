@@ -8,6 +8,10 @@ import time
 import numpy as np 
 from computedist import extractpath
 secondpath=True
+
+aset="2"
+#adjust=True
+#adjust= "ad" if adjust==True else False
 def createdm(sans2,width):
 	start=0
 	fans=[]
@@ -40,7 +44,7 @@ def run():
 			
 			#Read coords
 			coords=[]
-			with open("../LKH/temp/cut"+problem+".csv", "rb") as f:
+			with open("../LKH/temp/adcut"+problem+".csv", "rb") as f:
 			    for i in csv.reader(f):
 			        coords.append([int(j) for j in i[1:]])
 			print len(coords)
@@ -52,7 +56,7 @@ def run():
 			mapper={}
 			
 			#Read mapper
-			with open("../LKH/temp/mapper"+problem+".csv", "rb") as f:
+			with open("../LKH/temp/admapper"+problem+".csv", "rb") as f:
 				for i in csv.reader(f):
 					mapper[int(i[1])]=int(i[0])
 			
@@ -61,7 +65,7 @@ def run():
 			width=len(coords)
 			
 			if secondpath:
-				fans1l1=extractpath("../LKH/path1/besttour_totcut"+problem+".tsp","tsp")
+				fans1l1=extractpath("../LKH/s"+aset+"path1/besttour_totcut"+problem+".tsp","tsp")
 				fans1l2=[-1]+(fans1l1)
 
 				fans1=zip(fans1l1,fans1l2)
@@ -71,7 +75,7 @@ def run():
 			fans=[]
 			fans=createdm(sans2,width)
 			#Write distance matrix
-			with open("../LKH/dm2p"+problem+".tsp","wb") as ff:
+			with open("../LKH/dm"+problem+".tsp","wb") as ff:
 				ff.write("NAME : cutter\n"+\
 						"TYPE : TSP\n"+\
 						"DIMENSION : "+str(len(coords))+"\n"+\
