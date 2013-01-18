@@ -4,17 +4,17 @@ Joins solutions
 import csv
 
 fans=[]
-aset="2"
-path="2"
-
+aset="1"
+path="1"
+gridsize=8
 """
 read cut files and solutions and rewrite them as real city numners
 """
-for i in range(6):
-	for j in range(6):
-		problem=str(i)+str(j)
+for i in range(gridsize):
+	for j in range(gridsize):
+		problem=str(i)+"_"+str(j)
 		orig=[]
-		with open("../LKH/temp/adcut"+problem+".csv","rb") as f:
+		with open("../LKH/temp/cut"+problem+".csv","rb") as f:
 
 			for k in csv.reader(f):
 				#print k
@@ -37,9 +37,9 @@ fans=[]
 Add all solutions in array fans
 """
 
-for i in range(6):
-	for j in range(6):
-		problem=str(i)+str(j)
+for i in range(gridsize):
+	for j in range(gridsize):
+		problem=str(i)+"_"+str(j)
 		with open("../LKH/s"+aset+"path"+path+"/ans"+problem+".csv","rb") as f:
 			add=[k for k in csv.reader(f)]
 			add.reverse()
@@ -58,6 +58,6 @@ for i in range(150000):
 """
 write final solutions
 """
-#with open("../LKH/results/minglead/fans.csv","wb") as f:
-#	csv.writer(f).writerow(["path2"])
-#	csv.writer(f).writerows(fans)
+with open("../LKH/results/tiny10_1/fans2.csv","wb") as f:
+	csv.writer(f).writerow(["path1"])
+	csv.writer(f).writerows(fans)

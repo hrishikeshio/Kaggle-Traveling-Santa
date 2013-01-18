@@ -7,11 +7,12 @@ import math
 import time
 import numpy as np 
 from computedist import extractpath
-secondpath=True
+secondpath=False
+aset="1"
+adjust=False
+gridsize=8
 
-aset="2"
-#adjust=True
-#adjust= "ad" if adjust==True else False
+adjust= "ad" if adjust==True else ""
 def createdm(sans2,width):
 	start=0
 	fans=[]
@@ -38,13 +39,13 @@ def makeinf(fans,ans,width):
 
 	
 def run():			
-	for c in range(6):
-		for d in range(6):
-			problem=str(c)+str(d)
+	for c in range(gridsize):
+		for d in range(gridsize):
+			problem=str(c)+"_"+str(d)
 			
 			#Read coords
 			coords=[]
-			with open("../LKH/temp/adcut"+problem+".csv", "rb") as f:
+			with open("../LKH/temp/"+adjust+"cut"+problem+".csv", "rb") as f:
 			    for i in csv.reader(f):
 			        coords.append([int(j) for j in i[1:]])
 			print len(coords)
@@ -56,7 +57,7 @@ def run():
 			mapper={}
 			
 			#Read mapper
-			with open("../LKH/temp/admapper"+problem+".csv", "rb") as f:
+			with open("../LKH/temp/"+adjust+"mapper"+problem+".csv", "rb") as f:
 				for i in csv.reader(f):
 					mapper[int(i[1])]=int(i[0])
 			
