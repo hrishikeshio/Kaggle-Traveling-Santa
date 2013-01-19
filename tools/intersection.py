@@ -24,7 +24,7 @@ if __name__=="__main__":
 			print len(res)
 			print res[:5]"""
 	#res=intersect("../LKH/besttour_totcut03.tsp","tsp","../LKH/path1/besttour_totcut03.tsp","tsp")
-	res=intersect("../LKH/results/tiny10_1/fans1.csv","csv","../LKH/results/tiny10_1/fans2.csv","csv")
+	res=intersect("../LKH/results/tiny8_1/fans1.csv","csv","../LKH/results/tiny8_1/fans2.csv","csv")
 	#res=intersect("../LKH/results/mingle/fans1.csv","csv","../LKH/results/mingle/fans2.csv","csv")
 	#res=intersect("../LKH/results/minglead/mingle1.csv","csv","../LKH/results/minglead/mingle2.csv","csv")
 	print "fin",len(res)

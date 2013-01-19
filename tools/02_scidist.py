@@ -7,7 +7,7 @@ import math
 import time
 import numpy as np 
 from computedist import extractpath
-secondpath=False
+secondpath=True
 aset="1"
 adjust=False
 gridsize=8
@@ -24,7 +24,6 @@ def createdm(sans2,width):
 	return fans			
 def makeinf(fans,ans,width):
 	for i in fans[1:]:
-		#print i
 		a,b= (i[0],i[1]) if  (i[0]<i[1]) else (i[1],i[0])
 		#idx=(a-1)*(b-1)+(a+1)*(a+2)/2-1
 		idx=width*(a)-a*(a+1)/2-(width-b)-1
@@ -61,7 +60,6 @@ def run():
 				for i in csv.reader(f):
 					mapper[int(i[1])]=int(i[0])
 			
-			#fans1l1=extractpath("../tools/temp/fans.csv","csv")
 			print problem
 			width=len(coords)
 			
@@ -86,14 +84,6 @@ def run():
 						"EDGE_WEIGHT_SECTION\n")
 			
 				csv.writer(ff,delimiter=" ").writerows(fans)
-			#with open("../LKH/temp/dm2p"+problem+".csv","wb") as ff:
-			#	csv.writer(ff,delimiter=",").writerows(fans)
-
-if __name__=="__main__":
 	
-	#fans=[(0,0),(5,3)]
-	#sans=[1,3,2,1,8,7,1,1,2,3,4,1,1,8,8,9,5,8,2,7,5]
-	#print sans
-	#print makeinf(fans,sans,[0]*7)
-	#print createdm(sans,[0]*7)
+if __name__=="__main__":
 	run()
