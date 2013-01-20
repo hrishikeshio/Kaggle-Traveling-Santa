@@ -43,7 +43,8 @@ def validate(path):
 
 
 if __name__ == "__main__":
-	path=extractpath("../LKH/results/tiny20_1/fans2.csv","csv")
+	#path=extractpath("../LKH/results/tiny20_1/fans2.csv","csv")
+	path=extractpath("../LKH/results/time300/fans.csv","csv")
 	print len(path)
 	print path[:5]
 	print dist(path)

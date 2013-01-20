@@ -1,0 +1,23 @@
+README for Traveling Santa Solution
+by Hrishikesh Huilgolkar
+
+The code provided is used to solve traveling santa problem. The code can be used to solve any TSP problem where 2 disjoint paths are to be found.
+
+The input file should be in format of coordinates.
+
+1 11 22
+2 93 32
+3 44 92
+etc
+
+Required python libraries:
+numpy, scipy
+LKH binary is also required
+The following scripts have to be run in the given order to get a solution.
+These are in /tools dir.
+00_cutter.py 	#Cuts the file in manageable chunks
+01_scidist.py	#Creates distance matrix
+02_runLKH.py	#runs LKH
+03_joiner.py	#joins resulting solution files
+
+5050.py is mingle script which is used to find average of two paths so as to find most optimal solution in our case.
